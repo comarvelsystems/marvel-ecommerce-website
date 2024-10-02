@@ -1,0 +1,35 @@
+.carousel button:nth-of-type(1),
+.carousel button:last-child {
+  width: 40px;
+  height: 40px;
+  background-color: #f2f3f4;
+  border: transparent;
+}
+
+.carousel button:nth-of-type(1) svg,
+.carousel button:last-child svg {
+  width: 20px;
+  height: 20px;
+  stroke: #7e7e7e;
+}
+
+.carousel button:nth-of-type(1) {
+  top: -51px;
+  left: auto;
+  right: calc(40px + 6px);
+}
+
+.carousel button:last-child {
+  top: -51px;
+  right: 0;
+}
+
+.carousel button:nth-of-type(1):hover,
+.carousel button:last-child:hover {
+  background-color: var(--primary-color);
+}
+
+.carousel button:nth-of-type(1):hover svg,
+.carousel button:last-child:hover svg {
+  stroke: #ffffff;
+}
