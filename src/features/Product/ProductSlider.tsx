@@ -2,8 +2,9 @@
 
 import { useState } from "react";
 import Image from "next/image";
-import { Swiper, SwiperSlide } from "swiper/react";
 import { motion } from "framer-motion";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Swiper as SwiperType } from "swiper";
 import { Parallax, FreeMode, Navigation, Thumbs } from "swiper/modules";
 import { topVariant } from "@/lib/motion";
 import "swiper/css";
@@ -58,7 +59,7 @@ const SWIPER_THUMBNAILS = [
 ];
 
 const ProductSlider = () => {
-  const [thumbsSwiper, setThumbsSwiper] = useState(null);
+  const [thumbsSwiper, setThumbsSwiper] = useState<SwiperType | null>(null);
 
   return (
     <motion.div
@@ -90,7 +91,7 @@ const ProductSlider = () => {
         ))}
       </Swiper>
       <Swiper
-        onSwiper={setThumbsSwiper}
+        onSwiper={swiper => setThumbsSwiper(swiper)}
         parallax={true}
         speed={1000}
         spaceBetween={12}
