@@ -23,7 +23,7 @@ const ProductCard = () => {
           </span>
         </div>
       </div>
-      <Link href='#' className='block p-4'>
+      <Link href='/product-slug' className='block p-4'>
         <Image
           src='/images/shop/product-1-1.jpg'
           alt='product image'
@@ -36,7 +36,7 @@ const ProductCard = () => {
         <div className='space-y-2.5'>
           <div className='flex items-center justify-between'>
             <Link
-              href='#'
+              href='/product-slug'
               className='block text-sm font-semibold text-muted-foreground'
             >
               Snack

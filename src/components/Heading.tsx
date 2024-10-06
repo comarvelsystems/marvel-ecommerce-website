@@ -3,10 +3,16 @@ import clsx from "clsx";
 interface Props {
   as?: "h1" | "h2" | "h3" | "h4" | "h5" | "h6";
   align?: "right" | "center" | "left";
+  className?: string;
   children: React.ReactNode;
 }
 
-const Heading: React.FC<Props> = ({ as = "h1", align, children }) => {
+const Heading: React.FC<Props> = ({
+  as = "h1",
+  align,
+  className,
+  children,
+}) => {
   const Element = as;
 
   return (
@@ -24,7 +30,7 @@ const Heading: React.FC<Props> = ({ as = "h1", align, children }) => {
           "text-center": align === "center",
           "text-left": align === "left",
         },
-        "font-bold capitalize leading-tight",
+        `font-bold capitalize leading-tight ${className}`,
       )}
     >
       {children}

@@ -15,7 +15,7 @@ const config: Config = {
       md: "768px",
       lg: "992px",
       xl: "1200px",
-      xxl: "1610px",
+      xxl: "1480px",
     },
     extend: {
       width: {

@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
-import { Cairo } from "next/font/google";
+import { Noto_Kufi_Arabic } from "next/font/google";
 import "./globals.css";
 
-const font = Cairo({
+const font = Noto_Kufi_Arabic({
   subsets: ["latin", "arabic"],
 });
 
@@ -19,7 +19,7 @@ export default function RootLayout({
   return (
     <html lang='en'>
       <body className={font.className}>
-        <nav className='mb-10 h-20 bg-zinc-300'></nav>
+        <nav className='h-20 bg-zinc-300'></nav>
         <main>{children}</main>
       </body>
     </html>
