@@ -36,7 +36,7 @@ const ProductCard = () => {
         <div className='space-y-2.5'>
           <div className='flex items-center justify-between'>
             <Link
-              href='/product-slug'
+              href='#'
               className='block text-sm font-semibold text-muted-foreground'
             >
               Snack
@@ -48,7 +48,7 @@ const ProductCard = () => {
               </span>
             </div>
           </div>
-          <Link href='#' className='block'>
+          <Link href='/product-slug' className='block'>
             <Heading as='h6'>
               Seeds of Change Organic Quinoa, Brown, & Red Rice
             </Heading>
