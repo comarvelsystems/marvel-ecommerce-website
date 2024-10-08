@@ -2,8 +2,15 @@
 
 import { motion } from "framer-motion";
 import { topVariant } from "@/lib/motion";
+import { useState } from "react";
+import { cn } from "@/lib/utils";
+
+// TODO: replace with real sizes
+const SIZES = ["XS", "S", "M", "L", "XL"];
 
 const ProductDetailsSizes = () => {
+  const [size, setSize] = useState<string>(() => SIZES[SIZES.length - 1]);
+
   return (
     <motion.div
       variants={topVariant({ delay: 0.7 })}
@@ -14,18 +21,18 @@ const ProductDetailsSizes = () => {
     >
       <span className='block text-lg font-bold'>Size:</span>
       <ul className='flex items-center gap-2'>
-        <li className='flex size-12 cursor-pointer items-center justify-center rounded-md border border-border text-lg font-semibold text-muted-foreground hover:bg-muted'>
-          16
-        </li>
-        <li className='flex size-12 cursor-pointer items-center justify-center rounded-md border border-border text-lg font-semibold text-muted-foreground hover:bg-muted'>
-          24
-        </li>
-        <li className='flex size-12 cursor-pointer items-center justify-center rounded-md border border-border text-lg font-semibold text-muted-foreground hover:bg-muted'>
-          32
-        </li>
-        <li className='flex size-12 cursor-pointer items-center justify-center rounded-md border border-primary bg-primary/5 text-lg font-semibold text-primary hover:bg-muted'>
-          40
-        </li>
+        {SIZES.map((sizeName, index) => (
+          <li
+            key={index}
+            className={cn(
+              "flex size-12 cursor-pointer items-center justify-center rounded-md border border-border text-lg font-semibold text-muted-foreground hover:bg-muted",
+              size === sizeName && "border-primary bg-primary/10 text-primary",
+            )}
+            onClick={() => setSize(sizeName)}
+          >
+            {sizeName}
+          </li>
+        ))}
       </ul>
     </motion.div>
   );

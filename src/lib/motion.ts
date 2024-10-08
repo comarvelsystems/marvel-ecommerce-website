@@ -42,9 +42,9 @@ export const topVariant = ({
     top,
     opacity,
   },
-  show: {
+  show: (index: number) => ({
     top: 0,
     opacity: 1,
-    transition: { duration, delay },
-  },
+    transition: { duration, delay: index ? index * delay : delay },
+  }),
 });

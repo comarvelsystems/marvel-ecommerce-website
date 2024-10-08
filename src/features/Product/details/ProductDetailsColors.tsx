@@ -1,10 +1,35 @@
 "use client";
 
+import { useState } from "react";
 import { motion } from "framer-motion";
 import { Check } from "lucide-react";
 import { topVariant } from "@/lib/motion";
+import { cn } from "@/lib/utils";
+import lightenColor from "@/lib/lightenColor";
+
+// TODO: replace with real colors
+const COLORS = [
+  {
+    id: "1",
+    name: "#f00000",
+  },
+  {
+    id: "2",
+    name: "#7f00ff",
+  },
+  {
+    id: "3",
+    name: "#ffa500",
+  },
+  {
+    id: "4",
+    name: "#008000",
+  },
+];
 
 const ProductDetailsColors = () => {
+  const [color, setColor] = useState<string>(() => COLORS[1].name);
+
   return (
     <motion.div
       variants={topVariant({ delay: 0.6 })}
@@ -15,24 +40,20 @@ const ProductDetailsColors = () => {
     >
       <span className='block text-lg font-bold'>Color:</span>
       <div className='flex items-center gap-2'>
-        <span
-          data-color='red'
-          className='block size-12 rounded-full border border-red-400 bg-red-400'
-        />
-        <div
-          data-color='violet'
-          className='flex size-12 items-center justify-center rounded-full border border-black bg-violet-400 text-white'
-        >
-          <Check strokeWidth={2.5} />
-        </div>
-        <span
-          data-color='orange'
-          className='block size-12 rounded-full border border-orange-200 bg-orange-200'
-        />
-        <span
-          data-color='white'
-          className='block size-12 rounded-full border border-green-200 bg-green-200'
-        />
+        {COLORS.map(({ id, name }) => (
+          <div
+            key={id}
+            data-color={name}
+            className={cn(
+              "flex size-12 cursor-pointer items-center justify-center rounded-full border border-transparent text-background transition-colors duration-300 hover:border-black",
+              color === name && "border-foreground",
+            )}
+            style={{ backgroundColor: lightenColor(name, 0.4) }}
+            onClick={() => setColor(name)}
+          >
+            {color === name && <Check strokeWidth={2.5} />}
+          </div>
+        ))}
       </div>
     </motion.div>
   );

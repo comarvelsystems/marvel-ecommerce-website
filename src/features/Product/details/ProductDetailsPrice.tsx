@@ -12,12 +12,12 @@ const ProductDetailsPrice = () => {
       viewport={{ once: true }}
       className='relative flex items-center gap-4'
     >
-      <span className='block text-4xl font-bold text-primary'>1,500 SAR</span>
+      <span className='block text-3xl font-bold'>1,500 SAR</span>
       <div>
         <span className='block text-sm font-semibold text-red-600'>
           50% Off
         </span>
-        <span className='block text-xl font-bold text-muted-foreground/60 line-through'>
+        <span className='block text-lg font-semibold text-muted-foreground/60 line-through'>
           2000.00 SAR
         </span>
       </div>

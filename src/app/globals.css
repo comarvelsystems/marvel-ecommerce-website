@@ -83,27 +83,62 @@
   .s-container {
     @apply container mx-auto px-3 xl:max-w-screen-xxl;
   }
+
   .s-padding {
     @apply py-6;
   }
+
+  .product-tabs .tabs__item p {
+    @apply text-muted-foreground;
+  }
+
+  .product-tabs .tabs__item p > strong {
+    @apply text-foreground;
+  }
+
+  .product-tabs .tabs__item ul {
+    @apply list-inside list-disc;
+  }
+
+  .metadata-row {
+    @apply flex items-center justify-between p-3;
+  }
+
+  .metadata-row:nth-child(odd) {
+    @apply bg-muted/50;
+  }
+
+  .metadata-row-name {
+    @apply text-sm font-semibold;
+  }
+
+  .metadata-row-value {
+    @apply text-sm sm:w-1/2;
+  }
+
   .carousel > button:nth-of-type(1),
   .carousel > button:last-child {
     @apply size-10 border-transparent bg-gray-100;
   }
+
   .carousel > button:nth-of-type(1) svg,
   .carousel > button:last-child svg {
     @apply size-5 stroke-muted-foreground;
   }
+
   .carousel > button:nth-of-type(1) {
     @apply -top-[51px] left-auto right-[calc(40px+6px)];
   }
+
   .carousel > button:last-child {
     @apply -top-[51px] right-0;
   }
+
   .carousel > button:nth-of-type(1):hover,
   .carousel > button:last-child:hover {
     @apply bg-primary;
   }
+
   .carousel > button:nth-of-type(1):hover svg,
   .carousel > button:last-child:hover svg {
     @apply stroke-background;

@@ -19,8 +19,9 @@ export default function RootLayout({
   return (
     <html lang='en'>
       <body className={font.className}>
-        <nav className='h-20 bg-zinc-300'></nav>
+        <nav className='h-20 bg-muted'></nav>
         <main>{children}</main>
+        <footer className='mt-10 h-80 bg-muted'></footer>
       </body>
     </html>
   );

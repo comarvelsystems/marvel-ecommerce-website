@@ -1,8 +1,8 @@
 "use client";
 
 import { motion } from "framer-motion";
-import StarIcon from "@/components/StarIcon";
 import { topVariant } from "@/lib/motion";
+import RatingStars from "@/components/RatingStars";
 
 const ProductDetailsReviews = () => {
   return (
@@ -13,11 +13,7 @@ const ProductDetailsReviews = () => {
       viewport={{ once: true }}
       className='relative flex items-center gap-0'
     >
-      <StarIcon />
-      <StarIcon />
-      <StarIcon />
-      <StarIcon />
-      <StarIcon type='inActive' />
+      <RatingStars score={4} />
       <span className='ms-2 text-base font-semibold text-muted-foreground/70'>
         (32 reviews)
       </span>
