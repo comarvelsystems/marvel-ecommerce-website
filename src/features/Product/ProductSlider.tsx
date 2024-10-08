@@ -6,11 +6,13 @@ import { motion } from "framer-motion";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Swiper as SwiperType } from "swiper";
 import { Parallax, FreeMode, Navigation, Thumbs } from "swiper/modules";
+import Zoom from "react-medium-image-zoom";
 import { topVariant } from "@/lib/motion";
 import "swiper/css";
 import "swiper/css/free-mode";
 import "swiper/css/navigation";
 import "swiper/css/thumbs";
+import "react-medium-image-zoom/dist/styles.css";
 
 const SWIPER_IMAGES = [
   {
@@ -79,14 +81,16 @@ const ProductSlider = () => {
       >
         {SWIPER_IMAGES.map(({ id, imageUrl }, index) => (
           <SwiperSlide key={id} className='h-96 md:h-[480px] lg:h-[640px]'>
-            <Image
-              src={imageUrl}
-              width={0}
-              height={0}
-              sizes='100vw'
-              alt={`Slide ${index + 1}`}
-              className='h-auto w-full'
-            />
+            <Zoom>
+              <Image
+                src={imageUrl}
+                width={0}
+                height={0}
+                sizes='100vw'
+                alt={`Slide ${index + 1}`}
+                className='h-auto w-full'
+              />
+            </Zoom>
           </SwiperSlide>
         ))}
       </Swiper>
