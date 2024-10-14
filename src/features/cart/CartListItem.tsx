@@ -3,7 +3,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import { motion } from "framer-motion";
-import { Heart, Minus, Plus, Trash2, X } from "lucide-react";
+import { Heart, Minus, Plus, Trash2 } from "lucide-react";
 import Heading from "@/components/Heading";
 import { Button } from "@/components/ui/button";
 import { topVariant } from "@/lib/motion";

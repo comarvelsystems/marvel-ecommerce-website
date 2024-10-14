@@ -1,7 +1,7 @@
-import CartListItem from "./CartListItem";
+import WishlistListItem from "./WishlistListItem";
 
 // TODO: replace with real API
-const CART_ITEMS = [
+const WISHLIST_ITEMS = [
   {
     id: "1",
     title: "QT82 TWS Wireless BT Headphone Black",
@@ -25,16 +25,14 @@ const CART_ITEMS = [
   },
 ];
 
-const CartList = () => {
+const WishlistList = () => {
   return (
-    <>
-      <ul className='w-full flex-1 space-y-5'>
-        {CART_ITEMS.map((item, index) => (
-          <CartListItem key={item.id} {...item} index={index} />
-        ))}
-      </ul>
-    </>
+    <ul className='w-full flex-1 space-y-5'>
+      {WISHLIST_ITEMS.map((item, index) => (
+        <WishlistListItem key={item.id} {...item} index={index} />
+      ))}
+    </ul>
   );
 };
 
-export default CartList;
+export default WishlistList;
