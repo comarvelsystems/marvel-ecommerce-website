@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Noto_Kufi_Arabic } from "next/font/google";
+import Navbar from "@/components/navbar/Navbar";
 import "./globals.css";
 
 const font = Noto_Kufi_Arabic({
@@ -19,7 +20,7 @@ export default function RootLayout({
   return (
     <html lang='en'>
       <body className={font.className}>
-        <nav className='h-20 bg-muted'></nav>
+        <Navbar />
         <main>{children}</main>
         <footer className='mt-10 h-80 bg-muted'></footer>
       </body>

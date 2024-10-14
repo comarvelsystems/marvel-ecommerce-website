@@ -8,7 +8,7 @@ import ProductSections from "@/features/home/product-sections/ProductSections";
 const HomePage = () => {
   return (
     <>
-      <Slider />
+      {/* <Slider /> */}
       <FeaturedCategories />
       <Banner />
       <Products />

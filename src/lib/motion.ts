@@ -2,7 +2,6 @@ export const topLoopVariant = ({
   index,
   top = 50,
   opacity = 0,
-  duration = 0.5,
 }: topLoopVariant) => ({
   hidden: {
     top,
@@ -11,31 +10,35 @@ export const topLoopVariant = ({
   show: {
     top: 0,
     opacity: 1,
-    transition: { duration, delay: index * 0.1 },
+    transition: { delay: index * 0.1 },
   },
 });
 
-export const scaleVariant = ({
-  index,
-  scale = 1.1,
-  opacity = 0,
-  duration = 0.5,
-}: scaleVariant) => ({
+export const scaleVariant = () => ({
   hidden: {
-    scale: index <= 5 ? scale : 1,
-    opacity: index <= 5 ? opacity : 1,
+    scale: 1.1,
+    opacity: 0,
   },
-  show: {
+  show: (index: number) => ({
     scale: 1,
     opacity: 1,
-    transition: { duration, delay: index <= 5 ? index * 0.1 : 0 },
+    transition: { delay: index ? index * 0.1 : 0 },
+  }),
+});
+
+export const opacityVariant = () => ({
+  hidden: {
+    opacity: 0,
   },
+  show: (index: number) => ({
+    opacity: 1,
+    transition: { delay: index ? index * 0.1 : 0 },
+  }),
 });
 
 export const topVariant = ({
   top = 50,
   opacity = 0,
-  duration = 0.5,
   delay = 0.1,
 }: topVariant) => ({
   hidden: {
@@ -45,6 +48,8 @@ export const topVariant = ({
   show: (index: number) => ({
     top: 0,
     opacity: 1,
-    transition: { duration, delay: index ? index * delay : delay },
+    transition: {
+      delay: index ? index * delay : delay,
+    },
   }),
 });

@@ -1,7 +1,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import Heading from "../Heading";
-import StarIcon from "../StarIcon";
+import RatingStars from "../RatingStars";
 
 interface Props {
   imageUrl: string;
@@ -37,11 +37,7 @@ const WideProductCard: React.FC<Props> = ({
         <div className='space-y-1'>
           <Heading as='h6'>{title}</Heading>
           <div className='flex items-center rtl:space-x-reverse'>
-            <StarIcon />
-            <StarIcon />
-            <StarIcon />
-            <StarIcon />
-            <StarIcon type='inActive' />
+            <RatingStars score={4} />
             <span className='ms-2 text-sm font-semibold text-muted-foreground/60'>
               (4.0)
             </span>

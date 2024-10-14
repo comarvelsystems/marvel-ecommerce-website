@@ -1,6 +1,5 @@
 interface baseVariant {
   opacity?: number;
-  duration?: number;
 }
 
 interface topLoopVariant extends baseVariant {
@@ -11,9 +10,4 @@ interface topLoopVariant extends baseVariant {
 interface topVariant extends baseVariant {
   top?: number;
   delay?: number;
-}
-
-interface scaleVariant extends baseVariant {
-  scale?: number;
-  index: number;
 }

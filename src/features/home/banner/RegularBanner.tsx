@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { motion } from "framer-motion";
 import BannerImage from "./BannerImage";
-import { topLoopVariant } from "@/lib/motion";
+import { topVariant } from "@/lib/motion";
 
 interface Props {
   data: {
@@ -35,15 +35,16 @@ const RegularBanner: React.FC<Props> = ({ data }) => {
   return (
     <section className='s-padding'>
       <div className='s-container'>
-        <div className={`grid grid-cols-12 gap-6`}>
+        <div className='grid grid-cols-12 gap-6'>
           {data.banners.map(({ id, imageUrl, href, col }, index) => {
             return (
               <motion.div
                 key={id}
-                variants={topLoopVariant({ index, top: 100 })}
+                variants={topVariant({ top: 150 })}
                 initial='hidden'
                 whileInView='show'
                 viewport={{ once: true }}
+                custom={index + 1}
                 className={`group relative h-auto overflow-hidden rounded-xl ${colsSpan[col - 1]} col-span-full`}
               >
                 <Link href={href}>

@@ -11,7 +11,7 @@ const RatingStars: React.FC<Props> = ({ score, size = 14 }) => {
   const colors = ["red", "orange600", "orange400", "lime", "green"];
 
   return (
-    <>
+    <div className='flex items-center gap-0.5'>
       {Array.from({ length: 5 })
         .fill(0)
         .map((_, index) => {
@@ -21,7 +21,7 @@ const RatingStars: React.FC<Props> = ({ score, size = 14 }) => {
             <StarIcon size={size} key={index} type={starScore as colors} />
           );
         })}
-    </>
+    </div>
   );
 };
 

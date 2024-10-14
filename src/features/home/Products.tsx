@@ -7,7 +7,9 @@ const Products = () => {
       <div className='s-container'>
         <div className='space-y-8'>
           <header>
-            <Heading as='h3'>Popular Products</Heading>
+            <Heading as='h3' className='text-xl sm:text-3xl'>
+              Popular Products
+            </Heading>
           </header>
           <ProductSlider />
         </div>
