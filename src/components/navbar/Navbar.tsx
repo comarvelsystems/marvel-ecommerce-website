@@ -4,9 +4,9 @@ import CartSheet from "../CartSheet";
 
 const Navbar = () => {
   return (
-    <nav className='h-20 bg-muted'>
+    <nav className='h-[72px] border-b border-border/70 bg-background'>
       <div className='s-container'>
-        <div className='flex h-20 items-center justify-between gap-4'>
+        <div className='flex h-[72px] items-center justify-between gap-4'>
           <Link href='/'>
             <MoveLeft size={28} />
           </Link>
