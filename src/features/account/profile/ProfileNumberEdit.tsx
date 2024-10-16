@@ -14,6 +14,7 @@ import {
   Dialog,
   DialogClose,
   DialogContent,
+  DialogDescription,
   DialogFooter,
   DialogHeader,
   DialogTitle,
@@ -38,9 +39,10 @@ const ProfileNumberEdit: React.FC<Props> = ({ children }) => {
       <DialogTrigger asChild>{children}</DialogTrigger>
       <DialogContent className='max-w-[94%] rounded-lg sm:max-w-[525px]'>
         <DialogHeader className='text-start'>
-          <div className='flex justify-between gap-x-4'>
+          <div className='flex items-center justify-between gap-x-4'>
             <div className='space-y-2'>
               <DialogTitle>Change phone number</DialogTitle>
+              <DialogDescription />
             </div>
             <DialogClose asChild>
               <Button

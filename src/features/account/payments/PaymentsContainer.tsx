@@ -1,6 +1,4 @@
-import { Plus } from "lucide-react";
 import Heading from "@/components/Heading";
-import { Button } from "@/components/ui/button";
 import PaymentsList from "./PaymentsList";
 import PaymentsDefault from "./PaymentsDefault";
 
