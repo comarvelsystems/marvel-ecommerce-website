@@ -36,7 +36,7 @@ export const ACCOUNT_SIDEBAR_ITEM = [
   {
     name: "Payments",
     label: "payments",
-    href: "/Payments",
+    href: "/payments",
     icon: PaymentsIcon,
   },
   {

@@ -1,7 +1,7 @@
 import AddressesContainer from "@/features/account/address/AddressesContainer";
 
-const Addresses = () => {
+const AddressesPage = () => {
   return <AddressesContainer />;
 };
 
-export default Addresses;
+export default AddressesPage;
