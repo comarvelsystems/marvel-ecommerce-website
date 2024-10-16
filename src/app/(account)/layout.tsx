@@ -12,7 +12,7 @@ const AccountLayout = ({ children }: Props) => {
       <section className='flex-1'>
         <section className='flex h-full'>
           <AccountSidebar />
-          <section className='flex-1 bg-muted p-10'>{children}</section>
+          <section className='flex-1 bg-muted p-4 md:p-10'>{children}</section>
         </section>
       </section>
       <footer className='h-14 flex-none border-t border-border/70 bg-background'></footer>

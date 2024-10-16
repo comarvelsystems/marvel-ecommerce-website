@@ -24,7 +24,7 @@ export const ACCOUNT_SIDEBAR_ITEM = [
   {
     name: "Orders",
     label: "orders",
-    href: "/Orders",
+    href: "/orders",
     icon: OrdersIcon,
   },
   {
@@ -42,7 +42,7 @@ export const ACCOUNT_SIDEBAR_ITEM = [
   {
     name: "Profile",
     label: "profile",
-    href: "/Profile",
+    href: "/profile",
     icon: ProfileIcon,
   },
   {
