@@ -6,6 +6,7 @@ import {
   ReturnsIcon,
   ShieldUserIcon,
   WishlistIcon,
+  CoinsIcon,
 } from "@/components/solid-icons";
 
 export const ACCOUNT_SIDEBAR_ITEM = [
@@ -40,6 +41,12 @@ export const ACCOUNT_SIDEBAR_ITEM = [
     icon: PaymentsIcon,
   },
   {
+    name: "Points",
+    label: "points",
+    href: "/points",
+    icon: CoinsIcon,
+  },
+  {
     name: "Profile",
     label: "profile",
     href: "/profile",
@@ -50,5 +57,20 @@ export const ACCOUNT_SIDEBAR_ITEM = [
     label: "security-settings",
     href: "/security-settings",
     icon: ShieldUserIcon,
+  },
+];
+
+export const POINTS_TABS = [
+  {
+    name: "All",
+    label: "all",
+  },
+  {
+    name: "Earned",
+    label: "earned",
+  },
+  {
+    name: "Spent",
+    label: "spent",
   },
 ];
