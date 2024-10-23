@@ -74,3 +74,14 @@ export const POINTS_TABS = [
     label: "spent",
   },
 ];
+
+export const ORDERS_TABS = [
+  {
+    name: "All",
+    label: "all",
+  },
+  {
+    name: "Cancelled",
+    label: "cancelled",
+  },
+];

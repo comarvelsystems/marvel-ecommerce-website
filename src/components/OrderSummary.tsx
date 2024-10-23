@@ -2,11 +2,11 @@
 
 import Link from "next/link";
 import { motion } from "framer-motion";
+import { usePathname } from "next/navigation";
 import Heading from "@/components/Heading";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { opacityVariant, topVariant } from "@/lib/motion";
-import { usePathname } from "next/navigation";
 
 const OrderSummary = () => {
   const path = usePathname();
