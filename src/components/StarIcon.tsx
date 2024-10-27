@@ -1,9 +1,18 @@
+import { cn } from "@/lib/utils";
+
 interface Props {
   type?: "inActive" | "green" | "lime" | "orange400" | "orange600" | "red";
   size?: number | string;
+  isHover?: boolean;
+  hoverStyle?: string;
 }
 
-const StarIcon: React.FC<Props> = ({ type = "green", size = 14 }) => {
+const StarIcon: React.FC<Props> = ({
+  type = "green",
+  size = 14,
+  isHover = false,
+  hoverStyle,
+}) => {
   const variants = {
     inActive: "text-gray-300",
     green: "text-green-600",
@@ -15,7 +24,7 @@ const StarIcon: React.FC<Props> = ({ type = "green", size = 14 }) => {
 
   return (
     <svg
-      className={variants[type]}
+      className={cn(variants[type], isHover && hoverStyle)}
       aria-hidden='true'
       xmlns='http://www.w3.org/2000/svg'
       fill='currentColor'
