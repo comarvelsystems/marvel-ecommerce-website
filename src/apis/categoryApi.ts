@@ -6,7 +6,7 @@ export const getCategories = async (
 ): Promise<Categories | undefined> => {
   try {
     const res = await fetch(
-      "https://s.marvel-cloud.com/marvel_store_ap/graphql",
+      "https://s.marvel-cloud.com/marvel_store_api/graphql",
       {
         method: "POST",
         headers: {
