@@ -1,3 +1,4 @@
+import { Metadata } from "next";
 import {
   dehydrate,
   HydrationBoundary,
@@ -5,7 +6,6 @@ import {
 } from "@tanstack/react-query";
 import { getCategories } from "@/apis/categoryApi";
 import CategoriesContainer from "@/features/categories/CategoriesContainer";
-import { Metadata } from "next";
 
 interface Props {
   searchParams: {

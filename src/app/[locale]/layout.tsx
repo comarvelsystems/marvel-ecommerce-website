@@ -5,7 +5,7 @@ import { NextIntlClientProvider } from "next-intl";
 import { getMessages } from "next-intl/server";
 import { Toaster } from "@/components/ui/toaster";
 import { routing } from "@/i18n/routing";
-import QueryProvider from "@/lib/QueryProvider";
+import QueryClientProvider from "@/lib/QueryClientProvider";
 import "./globals.css";
 
 const font = Noto_Kufi_Arabic({
@@ -35,9 +35,9 @@ export default async function RootLayout({
     <html lang={locale} dir={dir} suppressHydrationWarning={true}>
       <body className={font.className}>
         <NextIntlClientProvider messages={messages}>
-          <QueryProvider>
+          <QueryClientProvider>
             <main className='flex min-h-screen flex-col'>{children}</main>
-          </QueryProvider>
+          </QueryClientProvider>
         </NextIntlClientProvider>
         <Toaster />
       </body>

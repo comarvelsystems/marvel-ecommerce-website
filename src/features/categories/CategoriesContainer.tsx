@@ -3,7 +3,7 @@
 import { useEffect } from "react";
 import { useTranslations } from "next-intl";
 import CategoriesList from "./CategoriesList";
-import useGetCategories from "@/hooks/useGetCategories";
+import useFetchCategories from "@/hooks/useFetchCategories";
 import {
   Pagination,
   StatusAlert,
@@ -19,7 +19,7 @@ interface Props {
 
 const CategoriesContainer: React.FC<Props> = ({ page }) => {
   const t = useTranslations("categories");
-  const { data, error, isFetching, refetch } = useGetCategories(page, 10);
+  const { data, error, isFetching, refetch } = useFetchCategories(page, 10);
 
   const categories = data?.categories || [];
   const totalPages = (data?.pagination?.total_pages as number) ?? 0;
@@ -49,7 +49,7 @@ const CategoriesContainer: React.FC<Props> = ({ page }) => {
           <div className='flex-col-full'>
             {!isFetching && !categories.length && <Empty />}
             {!isFetching && !error && !!categories.length && (
-              <CategoriesList categories={categories} />
+              <CategoriesList categories={categories} totalPages={totalPages} />
             )}
           </div>
           {<Pagination totalPages={totalPages} />}

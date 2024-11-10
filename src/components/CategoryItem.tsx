@@ -6,6 +6,7 @@ import { Placeholder } from "@/assets/images";
 import Heading from "./Heading";
 
 const CategoryItem: React.FC<Category> = ({
+  category_id,
   name,
   slug,
   image,
@@ -18,19 +19,19 @@ const CategoryItem: React.FC<Category> = ({
     <>
       {status === 1 ? (
         <Link
-          href={`/category/${slug}`}
-          className='flex flex-col items-center gap-y-6'
+          href={`/category/${slug}?cid=${category_id}`}
+          className='flex flex-col items-center gap-y-5'
         >
-          <div className='h-36 w-36 overflow-hidden rounded-xl bg-muted'>
+          <div className='aspect-square w-full overflow-hidden rounded-xl bg-muted'>
             <Image
               src={image ? "/images/categories/category-1.webp" : Placeholder}
               alt={name}
               width={0}
               height={0}
-              sizes='100vw'
+              sizes='(max-width: 640px) 96px, (max-width: 1024px) 128px, 144px'
               priority
-              className='h-full w-full object-cover'
               quality={10}
+              className='h-full w-full object-cover object-center'
             />
           </div>
           <div className='text-center'>
@@ -48,3 +49,5 @@ const CategoryItem: React.FC<Category> = ({
 };
 
 export default CategoryItem;
+
+//TODO: Fix Image
