@@ -1,5 +1,6 @@
 "use client";
 
+import { FC, Fragment } from "react";
 import { motion } from "framer-motion";
 import { topVariant } from "@/lib/motion";
 import { Category } from "@/utils/@types";
@@ -11,7 +12,7 @@ interface Props {
   totalPages: number;
 }
 
-const CategoriesList: React.FC<Props> = ({ categories, totalPages }) => {
+const CategoriesList: FC<Props> = ({ categories, totalPages }) => {
   return (
     <ul
       className={cn(
@@ -20,7 +21,7 @@ const CategoriesList: React.FC<Props> = ({ categories, totalPages }) => {
       )}
     >
       {categories?.map((category, index) => (
-        <>
+        <Fragment key={category.category_id}>
           {category.status === 1 && (
             <motion.li
               variants={topVariant({})}
@@ -29,12 +30,11 @@ const CategoriesList: React.FC<Props> = ({ categories, totalPages }) => {
               viewport={{ once: true }}
               custom={index + 1}
               className='relative'
-              key={category.category_id}
             >
               <CategoryItem {...category} />
             </motion.li>
           )}
-        </>
+        </Fragment>
       ))}
     </ul>
   );

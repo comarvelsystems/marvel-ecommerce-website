@@ -1,3 +1,4 @@
+import { FC } from "react";
 import Image from "next/image";
 import { useTranslations } from "next-intl";
 import { Link } from "@/i18n/routing";
@@ -5,7 +6,7 @@ import { Category } from "@/utils/@types";
 import { Placeholder } from "@/assets/images";
 import Heading from "./Heading";
 
-const CategoryItem: React.FC<Category> = ({
+const CategoryItem: FC<Category> = ({
   category_id,
   name,
   slug,

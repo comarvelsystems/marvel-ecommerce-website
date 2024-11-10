@@ -1,21 +1,28 @@
 "use client";
 
+import { FC } from "react";
 import Heading from "@/components/Heading";
-import Filters from "./Filters";
-import CategoryProducts from "./CategoryProducts";
 import useProductsForCategory from "./hooks/useProductsForCategory";
+import { ProductList } from "@/utils/@types";
+import useInfiniteScroll from "@/hooks/useInfiniteScroll";
+import { LoadMoreButton } from "@/components";
+import CategoryProducts from "./CategoryProducts";
+import Filters from "./Filters";
 
 interface Props {
   title: string;
   categoryId: number;
 }
 
-const CategoryContainer: React.FC<Props> = ({ title, categoryId }) => {
-  const { data } = useProductsForCategory({
-    categoryId,
-  });
+const CategoryContainer: FC<Props> = ({ title, categoryId }) => {
+  const { data, isFetching, isFetchingNextPage, hasNextPage, fetchNextPage } =
+    useProductsForCategory({
+      categoryId,
+    });
 
-  const products = data?.products ?? [];
+  const pages = data?.pages ?? ([] as ProductList[]);
+
+  useInfiniteScroll({ hasNextPage, fetchNextPage });
 
   return (
     <div className='space-y-5 p-0 lg:p-5'>
@@ -23,7 +30,13 @@ const CategoryContainer: React.FC<Props> = ({ title, categoryId }) => {
         <Heading as='h4'>{title}</Heading>
         <Filters />
       </div>
-      <CategoryProducts products={products} />
+      <CategoryProducts pages={pages} />
+      <LoadMoreButton
+        handler={fetchNextPage}
+        hasNextPage={hasNextPage}
+        isFetchingNextPage={isFetchingNextPage}
+        isFetching={isFetching}
+      />
     </div>
   );
 };

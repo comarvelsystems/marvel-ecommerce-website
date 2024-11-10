@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect } from "react";
+import { FC, useEffect } from "react";
 import { useTranslations } from "next-intl";
 import CategoriesList from "./CategoriesList";
 import useFetchCategories from "@/hooks/useFetchCategories";
@@ -17,7 +17,7 @@ interface Props {
   page: number;
 }
 
-const CategoriesContainer: React.FC<Props> = ({ page }) => {
+const CategoriesContainer: FC<Props> = ({ page }) => {
   const t = useTranslations("categories");
   const { data, error, isFetching, refetch } = useFetchCategories(page, 10);
 
