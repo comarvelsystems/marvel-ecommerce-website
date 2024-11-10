@@ -2,7 +2,7 @@
 
 import { Label } from "@/components/ui/label";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
-import Visa from "@/assets/images/card-visa.svg";
+// import Visa from "@/assets/images/card-visa.svg";
 
 const CheckoutPaymentMethodCreditSavedCardsForm = () => {
   return (

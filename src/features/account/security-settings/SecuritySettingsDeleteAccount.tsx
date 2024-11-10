@@ -85,7 +85,7 @@ const SecuritySettingsDeleteAccount = () => {
                     <FormField
                       control={form.control}
                       name='reason'
-                      render={({ field }) => (
+                      render={() => (
                         <FormItem>
                           <FormLabel>Reason for deleting account</FormLabel>
                           <FormControl>

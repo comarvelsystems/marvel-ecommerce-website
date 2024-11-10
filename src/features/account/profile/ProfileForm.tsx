@@ -36,7 +36,9 @@ import { topVariant } from "@/lib/motion";
 const ProfileForm = () => {
   const form = useForm();
 
-  const onSubmit = (values: any) => {};
+  const onSubmit = (values: any) => {
+    console.log(values);
+  };
 
   return (
     <motion.div
@@ -194,7 +196,7 @@ const ProfileForm = () => {
                 <FormField
                   control={form.control}
                   name='nationality'
-                  render={({ field }) => (
+                  render={() => (
                     <FormItem className='w-full'>
                       <FormLabel>Nationality</FormLabel>
                       <FormControl>
@@ -217,7 +219,7 @@ const ProfileForm = () => {
               <FormField
                 control={form.control}
                 name='gender'
-                render={({ field }) => (
+                render={() => (
                   <FormItem className='w-full'>
                     <FormLabel>Gender</FormLabel>
                     <FormControl>

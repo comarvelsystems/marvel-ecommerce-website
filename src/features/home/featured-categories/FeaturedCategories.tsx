@@ -1,7 +1,7 @@
-import Link from "next/link";
 import Heading from "@/components/Heading";
 import FeaturedCategorySlider from "./FeaturedCategoriesSlider";
 import { Button } from "@/components/ui/button";
+import { Link } from "@/i18n/routing";
 
 const FeaturedCategories = () => {
   return (
@@ -17,7 +17,9 @@ const FeaturedCategories = () => {
               asChild
               className='text-muted-foreground !no-underline hover:text-primary'
             >
-              <Link href='/categories'>Browse all</Link>
+              <Link href='/categories' prefetch={false}>
+                Browse all
+              </Link>
             </Button>
           </div>
           <FeaturedCategorySlider />

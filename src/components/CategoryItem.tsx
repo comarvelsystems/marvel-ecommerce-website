@@ -1,42 +1,49 @@
-import Link from "next/link";
 import Image from "next/image";
+import { useTranslations } from "next-intl";
+import { Link } from "@/i18n/routing";
+import { Category } from "@/utils/@types";
+import { Placeholder } from "@/assets/images";
 import Heading from "./Heading";
 
-interface Props {
-  id: string;
-  title: string;
-  imageUrl: string;
-  href: string;
-  countItems: number;
-}
-
-const CategoryItem: React.FC<Props> = ({
-  id,
-  title,
-  imageUrl,
-  href,
-  countItems,
+const CategoryItem: React.FC<Category> = ({
+  name,
+  slug,
+  image,
+  total_products,
+  status,
 }) => {
+  const t = useTranslations("globals");
+
   return (
-    <Link href={href} className='flex flex-col items-center gap-y-6'>
-      <div className='h-36 w-36 rounded-xl bg-muted'>
-        <Image
-          src={imageUrl}
-          alt={title}
-          width={0}
-          height={0}
-          sizes='100vw'
-          priority
-          className='h-full w-full object-cover'
-        />
-      </div>
-      <div className='text-center'>
-        <Heading as='h6'>{title}</Heading>
-        <span className='text-xs text-muted-foreground'>
-          {countItems} items
-        </span>
-      </div>
-    </Link>
+    <>
+      {status === 1 ? (
+        <Link
+          href={`/category/${slug}`}
+          className='flex flex-col items-center gap-y-6'
+        >
+          <div className='h-36 w-36 overflow-hidden rounded-xl bg-muted'>
+            <Image
+              src={image ? "/images/categories/category-1.webp" : Placeholder}
+              alt={name}
+              width={0}
+              height={0}
+              sizes='100vw'
+              priority
+              className='h-full w-full object-cover'
+              quality={10}
+            />
+          </div>
+          <div className='text-center'>
+            <Heading as='h2' className='text-base' title={name}>
+              {name}
+            </Heading>
+            <span className='text-xs text-muted-foreground'>
+              {total_products} {t("items")}
+            </span>
+          </div>
+        </Link>
+      ) : null}
+    </>
   );
 };
 

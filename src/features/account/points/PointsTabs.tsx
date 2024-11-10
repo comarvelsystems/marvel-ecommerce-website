@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { cn } from "@/lib/utils";
-import { POINTS_TABS } from "@/constants";
+import { POINTS_TABS } from "@/utils/constants";
 import { Card, CardContent, CardHeader } from "@/components/ui/card";
 import PointsList from "./PointsList";
 

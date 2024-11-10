@@ -1,7 +1,6 @@
 import React from "react";
 import Banner from "@/features/home/banner/Banner";
 import FeaturedCategories from "@/features/home/featured-categories/FeaturedCategories";
-import Slider from "@/features/home/slider/Slider";
 import Products from "@/features/home/Products";
 import ProductSections from "@/features/home/product-sections/ProductSections";
 

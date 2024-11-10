@@ -108,6 +108,7 @@ const FeaturedCategorySlider = () => {
         }),
       ]}
       className='carousel w-full'
+      dir='ltr'
     >
       <CarouselContent>
         {FAKE_FEATURED_CATEGORIES_SLIDES.map((category, index) => (

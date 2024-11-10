@@ -1,15 +1,17 @@
 "use client";
 
+import { useTranslations } from "next-intl";
 import { motion } from "framer-motion";
-import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
 import { topVariant } from "@/lib/motion";
-import { ACCOUNT_SIDEBAR_ITEM } from "@/constants";
+import { ACCOUNT_SIDEBAR_ITEM } from "@/utils/constants";
+import { Link } from "@/i18n/routing";
 
 const AccountSidebar = () => {
   const pathname = usePathname();
+  const t = useTranslations("account.sidebar");
 
   return (
     <aside className='box-content hidden w-[296px] flex-none pl-[calc(-770px+50vw)] lg:block rtl:pr-[calc(-720px+50vw)]'>
@@ -32,7 +34,7 @@ const AccountSidebar = () => {
           {ACCOUNT_SIDEBAR_ITEM.map(
             ({ name, label, href, icon: Icon }, index) => (
               <motion.li
-                key={label}
+                key={name}
                 variants={topVariant({})}
                 initial='hidden'
                 whileInView='show'
@@ -55,7 +57,7 @@ const AccountSidebar = () => {
                   >
                     <Icon />
                   </div>
-                  {name}
+                  {t(label as any)}
                 </Link>
               </motion.li>
             ),

@@ -5,6 +5,7 @@ interface Props {
   align?: "right" | "center" | "left";
   className?: string;
   children: React.ReactNode;
+  [key: string]: any;
 }
 
 const Heading: React.FC<Props> = ({
@@ -12,12 +13,14 @@ const Heading: React.FC<Props> = ({
   align,
   className,
   children,
+  ...props
 }) => {
   const Element = as;
 
   return (
     <Element
       role='heading'
+      {...props}
       className={clsx(
         {
           "text-5xl": as === "h1",

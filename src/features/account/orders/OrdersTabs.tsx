@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { Card, CardContent, CardHeader } from "@/components/ui/card";
-import { ORDERS_TABS } from "@/constants";
+import { ORDERS_TABS } from "@/utils/constants";
 import { cn } from "@/lib/utils";
 import OrdersList from "./OrdersList";
 

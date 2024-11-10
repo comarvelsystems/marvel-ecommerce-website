@@ -1,0 +1,33 @@
+{
+  "globals": {
+    "items": "Items",
+    "error": "Error",
+    "empty": {
+      "default": {
+        "title": "No Data Available",
+        "message": "No data available in the current time. Please try again later."
+      }
+    },
+    "buttons": {
+      "refetch": "Refetch"
+    }
+  },
+  "categories": {
+    "title": "Categories"
+  },
+  "account": {
+    "sidebar": {
+      "addresses": "Address",
+      "wishlist": "Wishlist",
+      "orders": "Orders",
+      "returns": "Returns",
+      "payments": "Payments",
+      "points": "Points",
+      "profile": "Profile",
+      "security": "Security Settings"
+    }
+  },
+  "errors": {
+    "server": "Failed to fetch data from server, please try again later."
+  }
+}
