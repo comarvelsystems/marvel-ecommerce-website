@@ -123,7 +123,7 @@ const FeaturedCategorySlider = () => {
               className='relative'
               custom={index}
             >
-              <CategoryItem {...category} />
+              {/* <CategoryItem {...category} /> */}
             </motion.div>
           </CarouselItem>
         ))}
