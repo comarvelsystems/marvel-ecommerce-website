@@ -1,13 +1,10 @@
 import { useQuery } from "@tanstack/react-query";
-import { getCategories } from "@/apis/categoryApi";
+import { getCategoriesApi } from "@/apis/categoryApi";
 
-type Page = number;
-type Limit = number;
-
-const useFetchCategories = (page: Page, limit: Limit = 16) => {
+const useFetchCategories = (page: number, limit: number = 16) => {
   const { data, isLoading, isError, error, isFetching, refetch } = useQuery({
     queryKey: ["categories", page],
-    queryFn: async () => getCategories(page, limit),
+    queryFn: async () => getCategoriesApi(page, limit),
   });
 
   return {

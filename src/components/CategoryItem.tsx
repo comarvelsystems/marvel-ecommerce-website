@@ -11,40 +11,35 @@ const CategoryItem: React.FC<Category> = ({
   slug,
   image,
   total_products,
-  status,
 }) => {
   const t = useTranslations("globals");
 
   return (
-    <>
-      {status === 1 ? (
-        <Link
-          href={`/category/${slug}?cid=${category_id}`}
-          className='flex flex-col items-center gap-y-5'
-        >
-          <div className='aspect-square w-full overflow-hidden rounded-xl bg-muted'>
-            <Image
-              src={image ? "/images/categories/category-1.webp" : Placeholder}
-              alt={name}
-              width={0}
-              height={0}
-              sizes='(max-width: 640px) 96px, (max-width: 1024px) 128px, 144px'
-              priority
-              quality={10}
-              className='h-full w-full object-cover object-center'
-            />
-          </div>
-          <div className='text-center'>
-            <Heading as='h2' className='text-base' title={name}>
-              {name}
-            </Heading>
-            <span className='text-xs text-muted-foreground'>
-              {total_products} {t("items")}
-            </span>
-          </div>
-        </Link>
-      ) : null}
-    </>
+    <Link
+      href={`/category/${slug}?cid=${category_id}`}
+      className='flex flex-col items-center gap-y-5'
+    >
+      <div className='aspect-square w-full overflow-hidden rounded-xl bg-muted'>
+        <Image
+          src={image ? "/images/categories/category-1.webp" : Placeholder}
+          alt={name}
+          width={0}
+          height={0}
+          sizes='(max-width: 640px) 96px, (max-width: 1024px) 128px, 144px'
+          priority
+          quality={10}
+          className='h-full w-full object-cover object-center'
+        />
+      </div>
+      <div className='text-center'>
+        <Heading as='h2' className='text-base' title={name}>
+          {name}
+        </Heading>
+        <span className='text-xs text-muted-foreground'>
+          {total_products} {t("items")}
+        </span>
+      </div>
+    </Link>
   );
 };
 

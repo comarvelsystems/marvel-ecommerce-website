@@ -20,17 +20,21 @@ const CategoriesList: React.FC<Props> = ({ categories, totalPages }) => {
       )}
     >
       {categories?.map((category, index) => (
-        <motion.li
-          variants={topVariant({})}
-          initial='hidden'
-          whileInView='show'
-          viewport={{ once: true }}
-          custom={index + 1}
-          className='relative'
-          key={category.category_id}
-        >
-          <CategoryItem {...category} />
-        </motion.li>
+        <>
+          {category.status === 1 && (
+            <motion.li
+              variants={topVariant({})}
+              initial='hidden'
+              whileInView='show'
+              viewport={{ once: true }}
+              custom={index + 1}
+              className='relative'
+              key={category.category_id}
+            >
+              <CategoryItem {...category} />
+            </motion.li>
+          )}
+        </>
       ))}
     </ul>
   );

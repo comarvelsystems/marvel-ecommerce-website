@@ -1,6 +1,6 @@
 import { Categories } from "@/utils/@types";
 
-export const getCategories = async (
+export const getCategoriesApi = async (
   page = 1,
   perPage = 2,
 ): Promise<Categories | undefined> => {
