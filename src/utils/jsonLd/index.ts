@@ -31,6 +31,26 @@ export const categoryBreadcrumbsSchemaDts = (slug: string) =>
     ],
   });
 
+export const categoriesBreadcrumbsSchemaDts = () =>
+  JsonLd<BreadcrumbList>({
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      {
+        "@type": "ListItem",
+        position: 1,
+        name: "Home",
+        item: "http://localhost:8080",
+      },
+      {
+        "@type": "ListItem",
+        position: 2,
+        name: "categories",
+        item: `http://localhost:8080/categories`,
+      },
+    ],
+  });
+
 // export const JsonLdCategory = (
 //   name: string,
 //   desc: string,

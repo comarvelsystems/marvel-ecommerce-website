@@ -7,7 +7,7 @@ interface Props {
 
 const CategoriesSkeleton: React.FC<Props> = ({ length = 16 }) => {
   return (
-    <ul className='grid grid-cols-2 gap-6 sm:grid-cols-4 md:min-h-[494px] lg:grid-cols-6 xl:grid-cols-8'>
+    <ul className='grid grid-cols-2 gap-6 sm:grid-cols-4 lg:grid-cols-6 xl:grid-cols-8'>
       {Array(length)
         .fill(0)
         .map((_, index) => (

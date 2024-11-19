@@ -1,37 +1,37 @@
-import { FC } from "react";
 import { Metadata } from "next";
-import {
-  dehydrate,
-  HydrationBoundary,
-  QueryClient,
-} from "@tanstack/react-query";
-import { getCategoriesApi } from "@/apis/categoryApi";
-import CategoriesContainer from "@/features/categories/CategoriesContainer";
-
-interface Props {
-  searchParams: {
-    page: number;
-  };
-}
+import { getTranslations } from "next-intl/server";
+import CategoryContent from "@/features/categories/CategoryContent";
+import { Heading } from "@/components";
+import { categoriesBreadcrumbsSchemaDts } from "@/utils/jsonLd";
 
 export const metadata: Metadata = {
-  title: "Marvel eCommerce | Categories",
-  description: "Categories page",
+  title: "Categories | Marvel Store",
+  description: "",
 };
 
-const Categories: FC<Props> = async ({ searchParams }) => {
-  const queryClient = new QueryClient();
-  const currentPage = +searchParams.page || 1;
-
-  await queryClient.prefetchQuery({
-    queryKey: ["categories", currentPage],
-    queryFn: async () => getCategoriesApi(currentPage, 10),
-  });
+const Categories = async () => {
+  const t = await getTranslations("categories");
 
   return (
-    <HydrationBoundary state={dehydrate(queryClient)}>
-      <CategoriesContainer page={currentPage} />
-    </HydrationBoundary>
+    <div className='flex-col-full'>
+      <script
+        type='application/ld+json'
+        dangerouslySetInnerHTML={{
+          __html: categoriesBreadcrumbsSchemaDts(),
+        }}
+      />
+      <section className='s-padding flex-col-full'>
+        <div className='s-container flex-col-full'>
+          <div className='mb-8'>
+            <Heading as='h1' className='!text-2xl' title={t("title")}>
+              {t("title")}
+            </Heading>
+          </div>
+
+          <CategoryContent />
+        </div>
+      </section>
+    </div>
   );
 };
 
