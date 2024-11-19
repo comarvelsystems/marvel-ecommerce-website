@@ -59,7 +59,6 @@
     "uuid": "^11.0.2",
     "vaul": "^1.0.0",
     "zod": "^3.23.8",
-    "zukeeper": "^1.0.2",
     "zustand": "^5.0.0-rc.2"
   },
   "devDependencies": {
