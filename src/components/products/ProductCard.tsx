@@ -1,27 +1,18 @@
 import Image from "next/image";
-import Link from "next/link";
 import { Heart, ShoppingCart } from "lucide-react";
-import Heading from "../Heading";
+import { Product } from "@/utils/@types";
 import { Card, CardContent } from "../ui/card";
 import { Button } from "../ui/button";
+import { Placeholder } from "@/assets/images";
+import { Link } from "@/i18n/routing";
 
-interface Props {
-  id?: string;
-  title: string;
-  brand: string;
-  imageUrl: string;
-  priceAfterDiscount: number;
-  price: number;
-  status: boolean;
-}
-
-const ProductCard: React.FC<Props> = ({
-  title,
-  brand,
-  imageUrl,
-  priceAfterDiscount,
+const ProductCard: React.FC<Product> = ({
+  name,
+  image,
   price,
-  status,
+  special,
+  stock_status_id,
+  manufacturer_name: brand,
 }) => {
   return (
     <Card className='relative overflow-hidden rounded-xl border-border/70 shadow-none hover:border-border'>
@@ -35,21 +26,28 @@ const ProductCard: React.FC<Props> = ({
             >
               <Heart size={18} strokeWidth={2.5} />
             </Button>
-            {status && (
+            {/* {true && (
               <span className='select-none rounded-full bg-destructive/90 px-4 py-1.5 text-xs font-semibold text-background'>
                 New
               </span>
-            )}
+            )} */}
           </div>
         </div>
         <div className='flex aspect-[4/5] w-full items-center justify-center bg-background md:aspect-[3/4] lg:aspect-[2/2]'>
           <Link href='/product-slug' className='relative h-full w-full'>
             <Image
-              src={imageUrl}
-              alt='product image'
+              src={
+                image
+                  ? `https://s.marvel-cloud.com/image/${image}`
+                  : Placeholder
+              }
+              alt={name}
               fill
+              priority
               sizes='(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw'
               className='mx-auto object-contain'
+              placeholder='blur'
+              blurDataURL={Placeholder.blurDataURL}
             />
           </Link>
         </div>
@@ -61,31 +59,36 @@ const ProductCard: React.FC<Props> = ({
                 {brand}
               </Link>
             </div>
-            <Link href='/product-slug' className='block'>
-              <Heading as='h6' className='text-xs sm:text-sm'>
-                {title}
-              </Heading>
+            <Link href='/product-slug' className='block h-10 overflow-hidden'>
+              <p
+                className='line-clamp-2 text-ellipsis text-xs font-medium sm:text-sm'
+                title={name}
+              >
+                {name}
+              </p>
             </Link>
             <div className='flex flex-col items-start justify-between gap-y-2 sm:flex-row sm:items-center'>
               <div className='flex flex-row items-center gap-2 sm:flex-col sm:items-start sm:gap-0'>
-                {priceAfterDiscount ? (
+                {special ? (
                   <>
                     <span className='block text-sm font-semibold text-destructive sm:text-base'>
-                      {priceAfterDiscount} SAR
+                      {special}
                     </span>
                     <span className='block text-xs text-muted-foreground/70 line-through'>
-                      {price} SAR
+                      {price}
                     </span>
                   </>
                 ) : (
                   <span className='block text-sm font-semibold sm:text-base'>
-                    {price} SAR
+                    {price}
                   </span>
                 )}
               </div>
+
               <Button
                 variant='outline'
                 className='w-full rounded-lg border-none bg-muted text-muted-foreground hover:bg-primary hover:text-background sm:w-auto'
+                disabled={stock_status_id === 5}
               >
                 <ShoppingCart
                   size={20}

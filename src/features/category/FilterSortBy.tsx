@@ -9,7 +9,7 @@ import {
 
 const FilterSortBy = () => {
   return (
-    <Select>
+    <Select name='sortBy'>
       <SelectTrigger className='w-20 flex-shrink-0 sm:w-32 md:w-40'>
         <SelectValue placeholder='Sort By' />
       </SelectTrigger>

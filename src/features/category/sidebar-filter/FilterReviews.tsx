@@ -1,6 +1,5 @@
 "use client";
 
-import { motion } from "framer-motion";
 import RatingStars from "@/components/RatingStars";
 import {
   Accordion,
@@ -11,7 +10,6 @@ import {
 import { Badge } from "@/components/ui/badge";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Label } from "@/components/ui/label";
-import { topVariant } from "@/lib/motion";
 
 // TODO: replace with real API
 const REVIEWS = [
@@ -50,16 +48,8 @@ const FilterReviews = () => {
           Reviews
         </AccordionTrigger>
         <AccordionContent className='space-y-3'>
-          {REVIEWS.map(({ id, score, number }, index) => (
-            <motion.div
-              key={id}
-              variants={topVariant({})}
-              initial='hidden'
-              whileInView='show'
-              viewport={{ once: true }}
-              custom={index + 1}
-              className='relative flex items-center justify-between gap-4'
-            >
+          {REVIEWS.map(({ id, score, number }) => (
+            <div key={id} className='flex items-center justify-between gap-4'>
               <Label
                 htmlFor={`score-${score}`}
                 className='flex flex-1 items-center gap-4'
@@ -79,7 +69,7 @@ const FilterReviews = () => {
               >
                 {number}
               </Badge>
-            </motion.div>
+            </div>
           ))}
         </AccordionContent>
       </AccordionItem>

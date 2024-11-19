@@ -15,3 +15,5 @@ export { default as RatingStars } from "./RatingStars";
 export { default as StarIcon } from "./StarIcon";
 export { default as StarRating } from "./StarRating";
 export { default as RefetchButton } from "./RefetchButton";
+export { default as LoadMoreButton } from "./LoadMoreButton";
+export { default as PageInfo } from "./PageInfo";

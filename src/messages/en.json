@@ -2,6 +2,8 @@
   "globals": {
     "items": "Items",
     "error": "Error",
+    "from": "From",
+    "to": "To",
     "empty": {
       "default": {
         "title": "No Data Available",
@@ -9,7 +11,8 @@
       }
     },
     "buttons": {
-      "refetch": "Refetch"
+      "refetch": "Refetch",
+      "loadMore": "Load More"
     }
   },
   "categories": {

@@ -1,6 +1,5 @@
 "use client";
 
-import { motion } from "framer-motion";
 import {
   Accordion,
   AccordionContent,
@@ -10,7 +9,6 @@ import {
 import { Badge } from "@/components/ui/badge";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Label } from "@/components/ui/label";
-import { topVariant } from "@/lib/motion";
 
 // TODO: replace with real API
 const NEW_ARRIVAL = [
@@ -42,16 +40,8 @@ const FilterNewArrival = () => {
           New Arrival
         </AccordionTrigger>
         <AccordionContent className='space-y-3'>
-          {NEW_ARRIVAL.map(({ id, name, label, number }, index) => (
-            <motion.div
-              key={id}
-              variants={topVariant({})}
-              initial='hidden'
-              whileInView='show'
-              viewport={{ once: true }}
-              custom={index + 1}
-              className='relative flex items-center justify-between gap-4'
-            >
+          {NEW_ARRIVAL.map(({ id, name, label, number }) => (
+            <div key={id} className='flex items-center justify-between gap-4'>
               <Label htmlFor={label} className='flex flex-1 items-center gap-4'>
                 <Checkbox
                   id={label}
@@ -70,7 +60,7 @@ const FilterNewArrival = () => {
               >
                 {number}
               </Badge>
-            </motion.div>
+            </div>
           ))}
         </AccordionContent>
       </AccordionItem>

@@ -19,6 +19,7 @@ const CategoryItem: FC<Category> = ({
     <Link
       href={`/category/${slug}?cid=${category_id}`}
       className='flex flex-col items-center gap-y-5'
+      prefetch={false}
     >
       <div className='aspect-square w-full overflow-hidden rounded-xl bg-muted'>
         <Image

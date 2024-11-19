@@ -137,7 +137,7 @@ const ProductSlider = () => {
               }}
               custom={index + 1}
             >
-              <ProductCard {...product} />
+              {/* <ProductCard {...product} /> */}
             </motion.div>
           </CarouselItem>
         ))}

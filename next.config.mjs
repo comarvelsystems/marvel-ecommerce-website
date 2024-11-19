@@ -1,4 +1,5 @@
 import createNextIntlPlugin from "next-intl/plugin";
+import withPlaiceholder from "@plaiceholder/next";
 
 const withNextIntl = createNextIntlPlugin();
 
@@ -7,10 +8,15 @@ const nextConfig = {
   images: {
     remotePatterns: [
       {
-        hostname: "placehold.jp",
+        hostname: "s.marvel-cloud.com",
       },
     ],
   },
+  logging: {
+    fetches: {
+      fullUrl: true,
+    },
+  },
 };
 
-export default withNextIntl(nextConfig);
+export default withNextIntl(withPlaiceholder(nextConfig));

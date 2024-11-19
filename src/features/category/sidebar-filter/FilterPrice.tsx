@@ -1,6 +1,5 @@
 "use client";
 
-import { motion } from "framer-motion";
 import { ArrowRight } from "lucide-react";
 import {
   Accordion,
@@ -10,7 +9,6 @@ import {
 } from "@/components/ui/accordion";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { topVariant } from "@/lib/motion";
 
 const FilterPrice = () => {
   return (
@@ -20,13 +18,7 @@ const FilterPrice = () => {
           Price
         </AccordionTrigger>
         <AccordionContent className='space-y-2'>
-          <motion.div
-            variants={topVariant({})}
-            initial='hidden'
-            whileInView='show'
-            viewport={{ once: true }}
-            className='relative flex items-center gap-2'
-          >
+          <div className='flex items-center gap-2'>
             <div className='relative'>
               <div className='absolute right-3 top-1/2 -translate-y-1/2 text-sm text-muted-foreground/60 rtl:left-3 rtl:right-auto'>
                 SAR
@@ -55,7 +47,7 @@ const FilterPrice = () => {
             <Button variant='secondary' size='icon' className='flex-shrink-0'>
               <ArrowRight size={16} />
             </Button>
-          </motion.div>
+          </div>
         </AccordionContent>
       </AccordionItem>
     </Accordion>
