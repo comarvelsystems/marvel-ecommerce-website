@@ -26,11 +26,7 @@ const CategoryContent = () => {
     count,
     totalRecords,
     isNotEmpty,
-  } = useInfinite({
-    handler: useFetchCategories,
-    limit: 8,
-    listName: "categories",
-  });
+  } = useInfinite(useFetchCategories, "categories", undefined, 8);
 
   useEffect(() => {
     if (isRefetching) {
