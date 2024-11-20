@@ -18,6 +18,9 @@
   "categories": {
     "title": "Categories"
   },
+  "brands": {
+    "title": "Brands"
+  },
   "account": {
     "sidebar": {
       "addresses": "Address",

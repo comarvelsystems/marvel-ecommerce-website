@@ -1,16 +1,14 @@
-import { useMemo } from "react";
+import { useQueryClient } from "@tanstack/react-query";
+import { useEffect, useMemo } from "react";
 
-interface Params {
-  handler: (limit: number) => any;
-  limit: number;
-  listName: string;
-}
+function useInfinite<T extends { [key: string]: any }>(
+  handler: (...args: any[]) => any,
+  listName: string,
+  queryKeySecond?: number,
+  ...args: any[]
+) {
+  const queryClient = useQueryClient();
 
-function useInfinite<T extends { [key: string]: any }>({
-  handler,
-  limit,
-  listName,
-}: Params) {
   const {
     data,
     isFetching,
@@ -19,7 +17,7 @@ function useInfinite<T extends { [key: string]: any }>({
     isLoading,
     hasNextPage,
     fetchNextPage,
-  } = handler(limit);
+  } = handler(...args);
 
   const pages = useMemo(() => {
     return data?.pages ?? ([] as T[]);
@@ -34,6 +32,16 @@ function useInfinite<T extends { [key: string]: any }>({
 
   const totalRecords = Number(pages[0]?.total_records);
   const isNotEmpty = data && pages.length > 0 && totalRecords > 0;
+
+  useEffect(() => {
+    const queryKey = queryKeySecond ? [listName, queryKeySecond] : [listName];
+
+    if (isRefetching) {
+      queryClient.resetQueries({
+        queryKey,
+      });
+    }
+  }, [isRefetching, queryClient, listName, queryKeySecond]);
 
   return {
     data,

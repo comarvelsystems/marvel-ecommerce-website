@@ -73,8 +73,22 @@ export interface Product {
   tax?: number;
 }
 
+export interface Brand {
+  manufacturer_id: number;
+  name: string;
+  products_count: number;
+  image?: string;
+  sort_order?: number;
+}
+
 export interface ProductList {
   total_records: number;
   pagination: Pagination;
   products: Product[];
+}
+
+export interface BrandList {
+  total_records: number;
+  pagination: Pagination;
+  manufacturers: Brand[];
 }

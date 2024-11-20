@@ -1,16 +1,18 @@
-import FilterSubCategories from "./FilterSubCategories";
+// import FilterSubCategories from "./FilterSubCategories";
 import FilterPrice from "./FilterPrice";
-import FilterNewArrival from "./FilterNewArrival";
+// import FilterNewArrival from "./FilterNewArrival";
 import FilterReviews from "./FilterReviews";
 import FilterCategories from "./FilterCategories";
+import FilterBrands from "./FilterBrands";
 
 const FilterOptions = () => {
   return (
     <>
       <FilterCategories />
-      <FilterSubCategories />
+      <FilterBrands />
+      {/* <FilterSubCategories /> */}
       <FilterPrice />
-      <FilterNewArrival />
+      {/* <FilterNewArrival /> */}
       <FilterReviews />
     </>
   );

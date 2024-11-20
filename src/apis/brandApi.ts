@@ -1,20 +1,17 @@
-import { ProductList } from "@/utils/@types";
+import { BrandList } from "@/utils/@types";
 
 interface Params {
   categoryId: number;
   page?: number;
   perPage?: number;
   sort?: string;
-  brandIds?: string;
 }
 
-export const getProductsForCategoryApi = async ({
+export const getBrandsApi = async ({
   categoryId,
   page = 1,
   perPage = 10,
-  sort,
-  brandIds,
-}: Params): Promise<ProductList | undefined> => {
+}: Params): Promise<BrandList | undefined> => {
   try {
     const res = await fetch(
       "https://s.marvel-cloud.com/marvel_store_api/graphql",
@@ -25,8 +22,8 @@ export const getProductsForCategoryApi = async ({
         },
         body: JSON.stringify({
           query: `
-            query ProductsForCategory($categoryId: Int!, $page: Int!, $perPage: Int, $sort: String, $brandIds: String) {
-              product_list(filter_category_id: $categoryId, page: $page, perPage: $perPage, sort: $sort, filter_manufacturer_id: $brandIds) {
+            query Manufacturer($categoryId: Int!, $page: Int!, $perPage: Int) {
+              manufacturer_list(filter_category_id: $categoryId, page: $page, per_page: $perPage) {
                 total_records
                 pagination {
                     page
@@ -35,20 +32,12 @@ export const getProductsForCategoryApi = async ({
                     next_page
                     prev_page
                 }
-                products {
-                    product_id
-                    name
-                    image
-                    price
-                    special
-                    category_name
-                    status
-                    sort_order
-                    manufacturer_id
-                    manufacturer_name
-                    quantity
-                    stock_status_name
-                    stock_status_id
+                manufacturers {
+                  manufacturer_id
+                  name
+                  image
+                  products_count
+                  sort_order
                 }
               }
             }`,
@@ -56,8 +45,6 @@ export const getProductsForCategoryApi = async ({
             categoryId,
             page,
             perPage,
-            sort,
-            brandIds,
           },
         }),
       },
@@ -73,7 +60,7 @@ export const getProductsForCategoryApi = async ({
       throw new Error(resData.errors[0].message);
     }
 
-    return resData.data?.product_list;
+    return resData.data?.manufacturer_list;
   } catch (error) {
     if (error instanceof Error) {
       throw new Error("server");

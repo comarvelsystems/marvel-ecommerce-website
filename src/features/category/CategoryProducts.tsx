@@ -17,6 +17,7 @@ const CategoryProducts = () => {
   const queryClient = useQueryClient();
 
   const categoryId = Number(searchParams.get("cid"));
+  const brandIds = searchParams.get("brands") as string;
 
   const {
     data,
@@ -29,6 +30,7 @@ const CategoryProducts = () => {
   } = useProductsForCategory({
     categoryName: slug as string,
     categoryId,
+    brandIds,
   });
 
   const pages = useMemo(() => {

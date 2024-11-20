@@ -11,8 +11,9 @@ const ProductCard: React.FC<Product> = ({
   image,
   price,
   special,
-  stock_status_id,
   manufacturer_name: brand,
+  stock_status_name,
+  quantity,
 }) => {
   return (
     <Card className='relative overflow-hidden rounded-xl border-border/70 shadow-none hover:border-border'>
@@ -85,17 +86,22 @@ const ProductCard: React.FC<Product> = ({
                 )}
               </div>
 
-              <Button
-                variant='outline'
-                className='w-full rounded-lg border-none bg-muted text-muted-foreground hover:bg-primary hover:text-background sm:w-auto'
-                disabled={stock_status_id === 5}
-              >
-                <ShoppingCart
-                  size={20}
-                  strokeWidth={2.5}
-                  className='flex-shrink-0 flex-grow-0'
-                />
-              </Button>
+              {quantity === 0 ? (
+                <span className='select-none text-xs font-medium text-destructive'>
+                  {stock_status_name}
+                </span>
+              ) : (
+                <Button
+                  variant='outline'
+                  className='w-full rounded-lg border-none bg-muted text-muted-foreground hover:bg-primary hover:text-background sm:w-auto'
+                >
+                  <ShoppingCart
+                    size={20}
+                    strokeWidth={2.5}
+                    className='flex-shrink-0 flex-grow-0'
+                  />
+                </Button>
+              )}
             </div>
           </div>
         </div>

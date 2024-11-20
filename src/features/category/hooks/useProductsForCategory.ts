@@ -7,6 +7,7 @@ interface Params {
   categoryId: number;
   limit?: number;
   sort?: string;
+  brandIds?: string;
 }
 
 const useProductsForCategory = ({
@@ -14,6 +15,7 @@ const useProductsForCategory = ({
   categoryId,
   limit,
   sort,
+  brandIds,
 }: Params) => {
   const category = `${categoryName}-${categoryId}`;
 
@@ -29,13 +31,14 @@ const useProductsForCategory = ({
     fetchNextPage,
     refetch,
   } = useInfiniteQuery({
-    queryKey: ["products", category],
+    queryKey: ["products", category, brandIds],
     queryFn: async ({ pageParam }) =>
       getProductsForCategoryApi({
         categoryId,
         page: pageParam,
         perPage: limit,
         sort,
+        brandIds,
       }),
     initialPageParam: 1,
     getNextPageParam: (data: ProductList | undefined) => {

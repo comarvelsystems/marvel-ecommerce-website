@@ -17,13 +17,10 @@ import { cn } from "@/lib/utils";
 import { Categories } from "@/utils/@types";
 import SidebarFilterSkeleton from "./SidebarFilterSkeleton";
 import useInfinite from "@/hooks/useInfinite";
-import { useEffect } from "react";
-import { useQueryClient } from "@tanstack/react-query";
 
 const FilterCategories = () => {
   const t = useTranslations();
   const param = useParams();
-  const queryClient = useQueryClient();
 
   const {
     isRefetching,
@@ -33,19 +30,7 @@ const FilterCategories = () => {
     fetchNextPage,
     pages,
     isNotEmpty,
-  } = useInfinite({
-    handler: useFetchCategories,
-    limit: 8,
-    listName: "categories",
-  });
-
-  useEffect(() => {
-    if (isRefetching) {
-      queryClient.resetQueries({
-        queryKey: ["categories"],
-      });
-    }
-  }, [isRefetching, queryClient]);
+  } = useInfinite(useFetchCategories, "categories", undefined, 8);
 
   return (
     <Accordion type='single' defaultValue='item-1' collapsible>
