@@ -1,5 +1,6 @@
 "use client";
 
+import { useEffect, useRef, useState } from "react";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import { useTranslations } from "next-intl";
 import { Loader2 } from "lucide-react";
@@ -12,20 +13,19 @@ import {
 import { Badge } from "@/components/ui/badge";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Label } from "@/components/ui/label";
-import SidebarFilterSkeleton from "./SidebarFilterSkeleton";
 import useInfinite from "@/hooks/useInfinite";
 import useFetchBrands from "@/hooks/useFetchBrands";
 import { BrandList } from "@/utils/@types";
 import { Button } from "@/components/ui/button";
-import { useEffect, useRef, useState } from "react";
+import SidebarFilterSkeleton from "./SidebarFilterSkeleton";
 
 const FilterBrands = () => {
   const t = useTranslations();
+  const [ids, setIds] = useState<string[]>([]);
+  const ref = useRef(true);
   const searchParams = useSearchParams();
   const pathname = usePathname();
   const router = useRouter();
-  const [ids, setIds] = useState<string[]>([]);
-  const ref = useRef(true);
 
   const categoryId = Number(searchParams.get("cid"));
   const queryKeySecond = categoryId;
