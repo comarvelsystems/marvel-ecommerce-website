@@ -4,6 +4,11 @@
     "error": "Error",
     "from": "From",
     "to": "To",
+    "search-results": "Search Results:",
+    "price": "Price",
+    "reviews": "Reviews",
+    "sub-categories": "Sub Categories",
+    "remove-all": "Remove All",
     "empty": {
       "default": {
         "title": "No Data Available",
@@ -13,13 +18,21 @@
     "buttons": {
       "refetch": "Refetch",
       "loadMore": "Load More"
+    },
+    "currency": {
+      "SAR": "SAR"
     }
   },
-  "categories": {
-    "title": "Categories"
-  },
-  "brands": {
-    "title": "Brands"
+  "pages": {
+    "category": {
+      "product-filters": "Product Filters"
+    },
+    "categories": {
+      "title": "Categories"
+    },
+    "brands": {
+      "title": "Brands"
+    }
   },
   "account": {
     "sidebar": {

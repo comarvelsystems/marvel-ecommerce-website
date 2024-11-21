@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef } from "react";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import { useTranslations } from "next-intl";
 import { Loader2 } from "lucide-react";
@@ -13,19 +13,20 @@ import {
 import { Badge } from "@/components/ui/badge";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Label } from "@/components/ui/label";
-import useInfinite from "@/hooks/useInfinite";
-import useFetchBrands from "@/hooks/useFetchBrands";
+import useInfinite from "@/hooks/use-infinite";
+import useFetchBrands from "@/hooks/use-fetch-brands";
 import { BrandList } from "@/utils/@types";
 import { Button } from "@/components/ui/button";
-import SidebarFilterSkeleton from "./SidebarFilterSkeleton";
+import FilterSkeleton from "./filter-skeleton";
+import useFiltersStore from "../store/use-filters-store";
 
-const FilterBrands = () => {
+const BrandFilter = () => {
   const t = useTranslations();
-  const [ids, setIds] = useState<string[]>([]);
   const ref = useRef(true);
   const searchParams = useSearchParams();
   const pathname = usePathname();
   const router = useRouter();
+  const { filters, setFilters, deleteFiler, deleteFilters } = useFiltersStore();
 
   const categoryId = Number(searchParams.get("cid"));
   const queryKeySecond = categoryId;
@@ -48,35 +49,41 @@ const FilterBrands = () => {
 
   useEffect(() => {
     if (ref.current) {
+      deleteFilters();
+
       const brand = searchParams.get("brands");
 
       if (brand) {
-        setIds(brand.split(","));
+        brand.split(",").map(filterItem => setFilters("brands", filterItem));
       }
     }
 
     return () => {
       ref.current = false;
     };
-  }, [searchParams]);
+  }, [deleteFilters, searchParams, setFilters]);
 
   useEffect(() => {
     const params = new URLSearchParams(searchParams.toString());
 
-    params.set("brands", ids.join(","));
+    params.set("brands", filters.brands.join(","));
 
-    if (ids.length === 0) {
+    if (filters.brands.length === 0) {
       params.delete("brands");
     }
 
     router.push(`${pathname}?${params}`);
-  }, [ids, pathname, router, searchParams]);
+  }, [filters, pathname, router, searchParams]);
 
-  const handleChange = (data: { id: number; isChecked: boolean }) => {
+  const handleChange = (data: {
+    id: number;
+    name: string;
+    isChecked: boolean;
+  }) => {
     if (data.isChecked) {
-      setIds(prev => [...prev, String(data.id)]);
+      setFilters("brands", `${data.name}-${data.id}`);
     } else {
-      setIds(prev => prev.filter(id => id !== String(data.id)));
+      deleteFiler("brands", `${data.name}-${data.id}`);
     }
   };
 
@@ -84,10 +91,10 @@ const FilterBrands = () => {
     <Accordion type='single' defaultValue='item-1' collapsible>
       <AccordionItem value='item-1' className='border-border/40'>
         <AccordionTrigger className='font-bold !no-underline'>
-          {t("brands.title")}
+          {t("pages.brands.title")}
         </AccordionTrigger>
         <AccordionContent className='space-y-3'>
-          {(isLoading || isRefetching) && <SidebarFilterSkeleton />}
+          {(isLoading || isRefetching) && <FilterSkeleton />}
 
           {!isLoading && !isRefetching && isNotEmpty
             ? pages?.map((page: BrandList) =>
@@ -103,15 +110,17 @@ const FilterBrands = () => {
                       <Checkbox
                         id={`brand-${brand.manufacturer_id}`}
                         className='border-border'
+                        name={`${brand.name}-${brand.manufacturer_id}`}
                         onCheckedChange={(value: boolean) =>
                           handleChange({
                             isChecked: value,
                             id: brand.manufacturer_id,
+                            name: brand.name,
                           })
                         }
-                        defaultChecked={ids.includes(
-                          String(brand.manufacturer_id),
-                        )}
+                        checked={filters.brands
+                          .map(filter => filter.split("-")[1])
+                          .includes(String(brand.manufacturer_id))}
                       />
                       <span className='block select-none text-sm font-normal text-muted-foreground'>
                         {brand.name}
@@ -149,4 +158,4 @@ const FilterBrands = () => {
   );
 };
 
-export default FilterBrands;
+export default BrandFilter;

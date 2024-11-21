@@ -1,3 +1,5 @@
+import { FC } from "react";
+import { useTranslations } from "next-intl";
 import { FilterX, X } from "lucide-react";
 import {
   Sheet,
@@ -10,9 +12,15 @@ import {
 } from "@/components/ui/sheet";
 import Heading from "@/components/Heading";
 import { Button } from "@/components/ui/button";
-import FilterOptions from "./FilterOptions";
+import OptionsFilter from "./options-filter";
 
-const FilterSheet = ({ children }: { children: React.ReactNode }) => {
+interface Props {
+  children: React.ReactNode;
+}
+
+const FilterSheet: FC<Props> = ({ children }) => {
+  const t = useTranslations("pages.category");
+
   return (
     <Sheet>
       <SheetTrigger asChild>{children}</SheetTrigger>
@@ -24,7 +32,7 @@ const FilterSheet = ({ children }: { children: React.ReactNode }) => {
           <div className='flex items-center justify-between gap-4 border-b border-border/40 pb-4'>
             <SheetTitle>
               <Heading as='h4' className='flex-1'>
-                Product Filters
+                {t("product-filters")}
               </Heading>
             </SheetTitle>
             <div className='flex items-center gap-4'>
@@ -49,7 +57,7 @@ const FilterSheet = ({ children }: { children: React.ReactNode }) => {
           <SheetDescription className='hidden'></SheetDescription>
         </SheetHeader>
         <div>
-          <FilterOptions />
+          <OptionsFilter />
         </div>
       </SheetContent>
     </Sheet>

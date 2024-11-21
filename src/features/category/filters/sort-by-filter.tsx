@@ -7,10 +7,10 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 
-const FilterSortBy = () => {
+const SortByFilter = () => {
   return (
     <Select name='sortBy'>
-      <SelectTrigger className='w-20 flex-shrink-0 sm:w-32 md:w-40'>
+      <SelectTrigger className='w-32 flex-shrink-0 md:w-40'>
         <SelectValue placeholder='Sort By' />
       </SelectTrigger>
       <SelectContent>
@@ -24,4 +24,4 @@ const FilterSortBy = () => {
   );
 };
 
-export default FilterSortBy;
+export default SortByFilter;

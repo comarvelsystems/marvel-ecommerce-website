@@ -2,17 +2,17 @@
 
 import { useEffect } from "react";
 import { useQueryClient } from "@tanstack/react-query";
-import useFetchCategories from "@/hooks/useFetchCategories";
+import useFetchCategories from "@/hooks/use-fetch-categories";
 import {
   Empty,
   CategoriesSkeleton,
   PageInfo,
   LoadMoreButton,
 } from "@/components";
-import CategoryList from "./CategoryList";
-import useInfinite from "@/hooks/useInfinite";
+import CategoryList from "./category-list";
+import useInfinite from "@/hooks/use-infinite";
 
-const CategoryContent = () => {
+const CategoriesContainer = () => {
   const queryClient = useQueryClient();
 
   const {
@@ -62,4 +62,4 @@ const CategoryContent = () => {
   );
 };
 
-export default CategoryContent;
+export default CategoriesContainer;

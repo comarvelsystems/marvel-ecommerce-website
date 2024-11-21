@@ -1,5 +1,7 @@
 "use client";
 
+import { useTranslations } from "next-intl";
+import RatingStars from "@/components/RatingStars";
 import {
   Accordion,
   AccordionContent,
@@ -11,48 +13,58 @@ import { Checkbox } from "@/components/ui/checkbox";
 import { Label } from "@/components/ui/label";
 
 // TODO: replace with real API
-const NEW_ARRIVAL = [
+const REVIEWS = [
   {
     id: "1",
-    name: "Last 7 days",
-    label: "last-7-days",
-    number: 1,
+    score: 1,
+    number: 0,
   },
   {
     id: "2",
-    name: "Last 30 days",
-    label: "last-30-days",
-    number: 4,
+    score: 2,
+    number: 3,
   },
   {
     id: "3",
-    name: "Last 60 days",
-    label: "last-60-days",
+    score: 3,
     number: 5,
+  },
+  {
+    id: "4",
+    score: 4,
+    number: 9,
+  },
+  {
+    id: "5",
+    score: 5,
+    number: 21,
   },
 ];
 
-const FilterNewArrival = () => {
+const ReviewsFilter = () => {
+  const t = useTranslations("globals");
+
   return (
     <Accordion type='single' defaultValue='item-1' collapsible>
       <AccordionItem value='item-1' className='border-border/40'>
         <AccordionTrigger className='font-bold !no-underline'>
-          New Arrival
+          {t("reviews")}
         </AccordionTrigger>
         <AccordionContent className='space-y-3'>
-          {NEW_ARRIVAL.map(({ id, name, label, number }) => (
+          {REVIEWS.map(({ id, score, number }) => (
             <div key={id} className='flex items-center justify-between gap-4'>
-              <Label htmlFor={label} className='flex flex-1 items-center gap-4'>
+              <Label
+                htmlFor={`score-${score}`}
+                className='flex flex-1 items-center gap-4'
+              >
                 <Checkbox
-                  id={label}
+                  id={`score-${score}`}
                   className='border-border'
                   onCheckedChange={() => {
                     console.log(`${id}`);
                   }}
                 />
-                <span className='block select-none text-sm font-normal text-muted-foreground'>
-                  {name}
-                </span>
+                <RatingStars score={score} />
               </Label>
               <Badge
                 variant='secondary'
@@ -68,4 +80,4 @@ const FilterNewArrival = () => {
   );
 };
 
-export default FilterNewArrival;
+export default ReviewsFilter;

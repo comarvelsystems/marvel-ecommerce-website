@@ -11,14 +11,14 @@ import {
 } from "@/components/ui/accordion";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-import useFetchCategories from "@/hooks/useFetchCategories";
+import useFetchCategories from "@/hooks/use-fetch-categories";
 import { Link } from "@/i18n/routing";
 import { cn } from "@/lib/utils";
 import { Categories } from "@/utils/@types";
-import SidebarFilterSkeleton from "./SidebarFilterSkeleton";
-import useInfinite from "@/hooks/useInfinite";
+import FilterSkeleton from "./filter-skeleton";
+import useInfinite from "@/hooks/use-infinite";
 
-const FilterCategories = () => {
+const CategoryFilter = () => {
   const t = useTranslations();
   const param = useParams();
 
@@ -36,10 +36,10 @@ const FilterCategories = () => {
     <Accordion type='single' defaultValue='item-1' collapsible>
       <AccordionItem value='item-1' className='border-border/40'>
         <AccordionTrigger className='font-bold !no-underline'>
-          {t("categories.title")}
+          {t("pages.categories.title")}
         </AccordionTrigger>
         <AccordionContent className='space-y-3'>
-          {(isLoading || isRefetching) && <SidebarFilterSkeleton />}
+          {(isLoading || isRefetching) && <FilterSkeleton />}
           {!isLoading && !isRefetching && isNotEmpty
             ? pages?.map((page: Categories) =>
                 page?.categories?.map(
@@ -92,4 +92,4 @@ const FilterCategories = () => {
   );
 };
 
-export default FilterCategories;
+export default CategoryFilter;

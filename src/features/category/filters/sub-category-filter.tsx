@@ -1,6 +1,6 @@
 "use client";
 
-import RatingStars from "@/components/RatingStars";
+import { useTranslations } from "next-intl";
 import {
   Accordion,
   AccordionContent,
@@ -12,56 +12,74 @@ import { Checkbox } from "@/components/ui/checkbox";
 import { Label } from "@/components/ui/label";
 
 // TODO: replace with real API
-const REVIEWS = [
+const SUB_CATEGORIES = [
   {
     id: "1",
-    score: 1,
-    number: 0,
+    name: "Mac",
+    label: "mac",
+    number: 4,
   },
   {
     id: "2",
-    score: 2,
+    name: "Dell",
+    label: "dell",
     number: 3,
   },
   {
     id: "3",
-    score: 3,
-    number: 5,
+    name: "Asus",
+    label: "asus",
+    number: 6,
   },
   {
     id: "4",
-    score: 4,
-    number: 9,
+    name: "Hp",
+    label: "hp",
+    number: 7,
   },
   {
     id: "5",
-    score: 5,
-    number: 21,
+    name: "MSI",
+    label: "msi",
+    number: 5,
+  },
+  {
+    id: "6",
+    name: "Lenovo",
+    label: "lenovo",
+    number: 8,
+  },
+  {
+    id: "7",
+    name: "Microsoft",
+    label: "microsoft",
+    number: 10,
   },
 ];
 
-const FilterReviews = () => {
+const SubCategoryFilter = () => {
+  const t = useTranslations("globals");
+
   return (
     <Accordion type='single' defaultValue='item-1' collapsible>
       <AccordionItem value='item-1' className='border-border/40'>
         <AccordionTrigger className='font-bold !no-underline'>
-          Reviews
+          {t("sub-categories")}
         </AccordionTrigger>
         <AccordionContent className='space-y-3'>
-          {REVIEWS.map(({ id, score, number }) => (
+          {SUB_CATEGORIES.map(({ id, name, label, number }) => (
             <div key={id} className='flex items-center justify-between gap-4'>
-              <Label
-                htmlFor={`score-${score}`}
-                className='flex flex-1 items-center gap-4'
-              >
+              <Label htmlFor={label} className='flex flex-1 items-center gap-4'>
                 <Checkbox
-                  id={`score-${score}`}
+                  id={label}
                   className='border-border'
                   onCheckedChange={() => {
                     console.log(`${id}`);
                   }}
                 />
-                <RatingStars score={score} />
+                <span className='block select-none text-sm font-normal text-muted-foreground'>
+                  {name}
+                </span>
               </Label>
               <Badge
                 variant='secondary'
@@ -77,4 +95,4 @@ const FilterReviews = () => {
   );
 };
 
-export default FilterReviews;
+export default SubCategoryFilter;

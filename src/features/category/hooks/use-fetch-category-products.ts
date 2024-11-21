@@ -10,7 +10,7 @@ interface Params {
   brandIds?: string;
 }
 
-const useProductsForCategory = ({
+const useFetchCategoryProducts = ({
   categoryName,
   categoryId,
   limit,
@@ -62,4 +62,4 @@ const useProductsForCategory = ({
   };
 };
 
-export default useProductsForCategory;
+export default useFetchCategoryProducts;

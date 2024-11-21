@@ -1,7 +1,7 @@
 "use client";
 
-import { useTranslations } from "next-intl";
 import { FC, ReactNode } from "react";
+import { useTranslations } from "next-intl";
 
 interface Props {
   count: number;
@@ -14,7 +14,7 @@ const PageInfo: FC<Props> = ({ count, totalRecords, children }) => {
 
   return (
     <div className='space-y-5'>
-      <div className='grid-cols-center grid- mt-12 grid w-full items-center gap-4'>
+      <div className='grid- mt-12 grid w-full grid-cols-center items-center gap-4'>
         <div className='border-b border-border' />
         <p className='text-center text-sm font-light text-muted-foreground'>
           {count} {t("from")} {totalRecords}

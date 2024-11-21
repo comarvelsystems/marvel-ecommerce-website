@@ -8,7 +8,7 @@ import ProductCard from "@/components/products/ProductCard";
 import { ProductList } from "@/utils/@types";
 import ProductSkeleton from "@/components/products/ProductSkeleton";
 import { Empty, LoadMoreButton, PageInfo } from "@/components";
-import useProductsForCategory from "./hooks/useProductsForCategory";
+import useFetchCategoryProducts from "./hooks/use-fetch-category-products";
 import { topVariant } from "@/lib/motion";
 
 const CategoryProducts = () => {
@@ -17,7 +17,14 @@ const CategoryProducts = () => {
   const queryClient = useQueryClient();
 
   const categoryId = Number(searchParams.get("cid"));
-  const brandIds = searchParams.get("brands") as string;
+  const getBrands = searchParams.get("brands");
+
+  const brandIds = useMemo(() => {
+    return getBrands
+      ?.split(",")
+      .map(item => Number(item.split("-")[1]))
+      .join(",");
+  }, [getBrands]);
 
   const {
     data,
@@ -27,7 +34,7 @@ const CategoryProducts = () => {
     isLoading,
     hasNextPage,
     fetchNextPage,
-  } = useProductsForCategory({
+  } = useFetchCategoryProducts({
     categoryName: slug as string,
     categoryId,
     brandIds,

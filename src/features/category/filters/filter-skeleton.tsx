@@ -5,7 +5,7 @@ interface Props {
   length?: number;
 }
 
-const SidebarFilterSkeleton: FC<Props> = ({ length = 8 }) => {
+const FilterSkeleton: FC<Props> = ({ length = 8 }) => {
   return Array(length)
     .fill(0)
     .map((_, index) => (
@@ -21,4 +21,4 @@ const SidebarFilterSkeleton: FC<Props> = ({ length = 8 }) => {
     ));
 };
 
-export default SidebarFilterSkeleton;
+export default FilterSkeleton;

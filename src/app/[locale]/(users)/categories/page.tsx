@@ -1,6 +1,6 @@
 import { Metadata } from "next";
 import { getTranslations } from "next-intl/server";
-import CategoryContent from "@/features/categories/CategoryContent";
+import CategoriesContainer from "@/features/categories/categories-container";
 import { Heading } from "@/components";
 import { categoriesBreadcrumbsSchemaDts } from "@/utils/jsonLd";
 
@@ -10,7 +10,7 @@ export const metadata: Metadata = {
 };
 
 const Categories = async () => {
-  const t = await getTranslations("categories");
+  const t = await getTranslations("pages.categories");
 
   return (
     <div className='flex-col-full'>
@@ -28,7 +28,7 @@ const Categories = async () => {
             </Heading>
           </div>
 
-          <CategoryContent />
+          <CategoriesContainer />
         </div>
       </section>
     </div>

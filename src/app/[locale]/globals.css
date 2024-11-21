@@ -196,3 +196,20 @@
 .swiper:hover .swiper-button-next {
   @apply lg:opacity-100;
 }
+
+.scrollbar::-webkit-scrollbar {
+  @apply h-1.5 w-2;
+}
+
+.scrollbar::-webkit-scrollbar-track {
+  @apply bg-background;
+}
+
+.scrollbar::-webkit-scrollbar-thumb {
+  @apply rounded-md bg-foreground;
+}
+
+.scrollbar {
+  scrollbar-width: inherit;
+  scrollbar-color: var(--foreground) var(--background);
+}
