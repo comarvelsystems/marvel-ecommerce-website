@@ -1,6 +1,5 @@
 "use client";
 
-import { FilterX, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import useFiltersStore from "../store/use-filters-store";
 import { useTranslations } from "next-intl";
@@ -9,12 +8,7 @@ const ResetFiltersButton = () => {
   const t = useTranslations("globals");
   const { deleteFilters } = useFiltersStore();
 
-  const { filters } = useFiltersStore();
-
-  const isExist =
-    filters.brands.length > 0 ||
-    filters.price.length > 0 ||
-    filters.subCategories.length > 0;
+  const { isExist } = useFiltersStore();
 
   return (
     <>
