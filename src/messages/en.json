@@ -9,6 +9,10 @@
     "reviews": "Reviews",
     "sub-categories": "Sub Categories",
     "remove-all": "Remove All",
+    "off": "Off",
+    "size": "Sizes",
+    "color": "Colors",
+    "add-cart": "Add to Cart",
     "empty": {
       "default": {
         "title": "No Data Available",
@@ -32,7 +36,28 @@
     },
     "brands": {
       "title": "Brands"
+    },
+    "not-found": {
+      "title": "Page Not Found",
+      "message": "The page you are looking for might have been removed, had its name changed, or is temporarily unavailable.",
+      "button": "Go back to Home Page" 
     }
+  },
+  "product": {
+    "model": "Model",
+    "sku": "SKU",
+    "upc": "UPC",
+    "reviews": "Reviews",
+    "in-stock": "In Stock",
+    "out-of-stock": "Out of Stock",
+    "brand": "Brand",
+    "product-reviews": {
+      "title": "Overall Rating",
+      "rating-count": "Based on {count} reviews"
+    },
+    "empty-description": "No description available for this product.",
+    "empty-specifications": "No specifications available for this product.",
+    "empty-reviews": "No reviews yet. You can purchase the product and leave the first review!"
   },
   "account": {
     "sidebar": {

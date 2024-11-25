@@ -1,9 +1,10 @@
+/* eslint-disable react/jsx-no-literals */
+
 "use client";
 
 import { useState } from "react";
-import { motion } from "framer-motion";
+import { useTranslations } from "next-intl";
 import { Check } from "lucide-react";
-import { topVariant } from "@/lib/motion";
 import { cn } from "@/lib/utils";
 import lightenColor from "@/lib/lightenColor";
 
@@ -27,18 +28,13 @@ const COLORS = [
   },
 ];
 
-const ProductDetailsColors = () => {
+const ProductColors = () => {
+  const t = useTranslations("globals");
   const [color, setColor] = useState<string>(() => COLORS[1].name);
 
   return (
-    <motion.div
-      variants={topVariant({ delay: 0.6 })}
-      initial='hidden'
-      whileInView='show'
-      viewport={{ once: true }}
-      className='relative space-y-4'
-    >
-      <span className='block text-lg font-bold'>Color:</span>
+    <div className='space-y-4'>
+      <span className='block text-lg font-bold'>{t("color")}:</span>
       <div className='flex items-center gap-2'>
         {COLORS.map(({ id, name }) => (
           <div
@@ -55,8 +51,8 @@ const ProductDetailsColors = () => {
           </div>
         ))}
       </div>
-    </motion.div>
+    </div>
   );
 };
 
-export default ProductDetailsColors;
+export default ProductColors;

@@ -6,7 +6,7 @@ export { default as CategoriesSkeleton } from "./CategoriesSkeleton";
 export { default as CategoryItem } from "./CategoryItem";
 export { default as Empty } from "./Empty";
 export { default as Heading } from "./Heading";
-export { default as InStock } from "./InStock";
+export { default as StockStatus } from "./stock";
 export { default as OrderSummary } from "./OrderSummary";
 export { default as Pagination } from "./Pagination";
 export { default as PaymentCard } from "./PaymentCard";

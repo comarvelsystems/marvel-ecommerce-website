@@ -1,4 +1,4 @@
-import { ProductList } from "@/utils/@types";
+import { Product, ProductList } from "@/utils/@types";
 
 interface Params {
   categoryId: number;
@@ -79,5 +79,56 @@ export const getProductsForCategoryApi = async ({
       throw new Error("server");
     }
     throw new Error("server");
+  }
+};
+
+export const getLeanProductApi = async (
+  productId: number,
+  languageId?: number,
+): Promise<Product | undefined> => {
+  try {
+    const response = await fetch(
+      "https://s.marvel-cloud.com/marvel_store_api/graphql",
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          query: `
+            query Product($productId: Int!, $languageId: Int) {
+              product(product_id: $productId, language_id: $languageId) {
+                product_info {
+                  name
+                  short_description
+                  sku
+                  image
+                  manufacturer_name
+                  price
+                  category_id
+                  category_name
+                  images {
+                    image
+                  }
+                }
+              }
+            }`,
+          variables: {
+            productId,
+            languageId,
+          },
+        }),
+      },
+    );
+
+    const resData = await response.json();
+
+    if (resData?.errors && resData.errors.length > 0) {
+      throw new Error(resData.errors[0].message);
+    }
+
+    return resData.data.product.product_info;
+  } catch (error) {
+    console.error("Error fetching product data");
   }
 };

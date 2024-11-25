@@ -7,6 +7,7 @@ import { Placeholder } from "@/assets/images";
 import { Link } from "@/i18n/routing";
 
 const ProductCard: React.FC<Product> = ({
+  product_id,
   name,
   image,
   price,
@@ -15,6 +16,8 @@ const ProductCard: React.FC<Product> = ({
   stock_status_name,
   quantity,
 }) => {
+  const encodedProductName = encodeURIComponent(name);
+
   return (
     <Card className='relative overflow-hidden rounded-xl border-border/70 shadow-none hover:border-border'>
       <CardContent className='p-0'>
@@ -35,7 +38,10 @@ const ProductCard: React.FC<Product> = ({
           </div>
         </div>
         <div className='flex aspect-[4/5] w-full items-center justify-center bg-background md:aspect-[3/4] lg:aspect-[2/2]'>
-          <Link href='/product-slug' className='relative h-full w-full'>
+          <Link
+            href={`/${encodedProductName}?pid=${product_id}`}
+            className='relative h-full w-full'
+          >
             <Image
               src={
                 image
@@ -60,7 +66,10 @@ const ProductCard: React.FC<Product> = ({
                 {brand}
               </Link>
             </div>
-            <Link href='/product-slug' className='block h-10 overflow-hidden'>
+            <Link
+              href={`/${product_id}`}
+              className='block h-10 overflow-hidden'
+            >
               <p
                 className='line-clamp-2 text-ellipsis text-xs font-medium sm:text-sm'
                 title={name}

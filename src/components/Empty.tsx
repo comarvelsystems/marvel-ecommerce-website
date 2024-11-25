@@ -18,7 +18,7 @@ const Empty: React.FC<Props> = ({ image, title, message }) => {
   const emptyMessage = message || "empty.default.message";
 
   return (
-    <div className='flex flex-1 flex-col items-center justify-center gap-y-4 py-6 text-center'>
+    <div className='flex-col-full items-center justify-center gap-y-4 py-6 text-center'>
       <Image
         src={image ? image : EmptyImage}
         width={128}

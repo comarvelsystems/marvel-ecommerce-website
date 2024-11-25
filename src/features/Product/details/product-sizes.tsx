@@ -1,25 +1,21 @@
+/* eslint-disable react/jsx-no-literals */
+
 "use client";
 
-import { motion } from "framer-motion";
-import { topVariant } from "@/lib/motion";
 import { useState } from "react";
+import { useTranslations } from "next-intl";
 import { cn } from "@/lib/utils";
 
 // TODO: replace with real sizes
 const SIZES = ["XS", "S", "M", "L", "XL"];
 
-const ProductDetailsSizes = () => {
+const ProductSizes = () => {
+  const t = useTranslations("globals");
   const [size, setSize] = useState<string>(() => SIZES[SIZES.length - 1]);
 
   return (
-    <motion.div
-      variants={topVariant({ delay: 0.7 })}
-      initial='hidden'
-      whileInView='show'
-      viewport={{ once: true }}
-      className='relative space-y-4'
-    >
-      <span className='block text-lg font-bold'>Size:</span>
+    <div className='space-y-4'>
+      <span className='block text-lg font-bold'>{t("size")}:</span>
       <ul className='flex items-center gap-2'>
         {SIZES.map((sizeName, index) => (
           <li
@@ -34,8 +30,8 @@ const ProductDetailsSizes = () => {
           </li>
         ))}
       </ul>
-    </motion.div>
+    </div>
   );
 };
 
-export default ProductDetailsSizes;
+export default ProductSizes;

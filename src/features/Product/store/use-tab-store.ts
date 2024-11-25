@@ -5,9 +5,9 @@ interface Store {
   setTab: (newTab: string) => void;
 }
 
-const useTab = create<Store>()(set => ({
-  tab: "details",
+const useTabStore = create<Store>()(set => ({
+  tab: "description",
   setTab: (newTab: string) => set(() => ({ tab: newTab })),
 }));
 
-export default useTab;
+export default useTabStore;

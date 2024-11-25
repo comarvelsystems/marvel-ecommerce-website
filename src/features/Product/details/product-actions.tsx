@@ -1,22 +1,16 @@
 "use client";
 
 import { useState } from "react";
-import { motion } from "framer-motion";
+import { useTranslations } from "next-intl";
 import { ChevronDown, ChevronUp, Heart, ShoppingCart } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { topVariant } from "@/lib/motion";
 
-const ProductDetailsActions = () => {
+const ProductActions = () => {
+  const t = useTranslations("globals");
   const [count, setCount] = useState<number>(1);
 
   return (
-    <motion.div
-      variants={topVariant({ delay: 0.8 })}
-      initial='hidden'
-      whileInView='show'
-      viewport={{ once: true }}
-      className='relative flex items-center gap-4'
-    >
+    <div className='flex items-center gap-4'>
       <div className='flex items-center gap-4 rounded-md border border-border px-4'>
         <span className='block w-6 text-center text-lg font-bold'>{count}</span>
         <div>
@@ -36,7 +30,7 @@ const ProductDetailsActions = () => {
       </div>
       <Button size='lg' className='flex-grow select-none gap-x-3 py-7 text-lg'>
         <ShoppingCart />
-        Add to Cart
+        {t("add-cart")}
       </Button>
       <Button
         variant='outline'
@@ -45,8 +39,8 @@ const ProductDetailsActions = () => {
       >
         <Heart />
       </Button>
-    </motion.div>
+    </div>
   );
 };
 
-export default ProductDetailsActions;
+export default ProductActions;

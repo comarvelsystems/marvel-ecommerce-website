@@ -85,3 +85,24 @@ export const ORDERS_TABS = [
     label: "cancelled",
   },
 ];
+
+export const PRODUCT_TABS = [
+  {
+    id: "1",
+    title: "Product Description",
+    description: "View product description.",
+    label: "description",
+  },
+  {
+    id: "2",
+    title: "Product Specifications",
+    description: "View product specifications.",
+    label: "specifications",
+  },
+  {
+    id: "3",
+    title: "Product Reviews",
+    description: "View product reviews.",
+    label: "reviews",
+  },
+];
