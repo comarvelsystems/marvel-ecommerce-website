@@ -3,10 +3,11 @@ import { Categories } from "@/utils/@types";
 export const getCategoriesApi = async (
   page = 1,
   perPage = 2,
+  languageId = 1,
 ): Promise<Categories | undefined> => {
   try {
     const res = await fetch(
-      "https://s.marvel-cloud.com/marvel_store_api/graphql",
+      "https://s.marvel-cloud.com/api/marvel_store_api/graphql",
       {
         method: "POST",
         headers: {
@@ -14,8 +15,8 @@ export const getCategoriesApi = async (
         },
         body: JSON.stringify({
           query: `
-            query CategoryList($page: Int!, $perPage: Int!) {
-              category_list(page: $page, per_page: $perPage) {
+            query CategoryList($page: Int!, $perPage: Int!, $languageId: Int) {
+              category_list(page: $page, per_page: $perPage, language_id: $languageId) {
                 total_records
                 pagination {
                   page
@@ -38,6 +39,7 @@ export const getCategoriesApi = async (
           variables: {
             page,
             perPage,
+            languageId,
           },
         }),
       },

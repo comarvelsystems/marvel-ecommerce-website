@@ -17,7 +17,7 @@ export const getProductsForCategoryApi = async ({
 }: Params): Promise<ProductList | undefined> => {
   try {
     const res = await fetch(
-      "https://s.marvel-cloud.com/marvel_store_api/graphql",
+      "https://s.marvel-cloud.com/api/marvel_store_api/graphql",
       {
         method: "POST",
         headers: {
@@ -88,7 +88,7 @@ export const getLeanProductApi = async (
 ): Promise<Product | undefined> => {
   try {
     const response = await fetch(
-      "https://s.marvel-cloud.com/marvel_store_api/graphql",
+      "https://s.marvel-cloud.com/api/marvel_store_api/graphql",
       {
         method: "POST",
         headers: {
@@ -129,6 +129,9 @@ export const getLeanProductApi = async (
 
     return resData.data.product.product_info;
   } catch (error) {
-    console.error("Error fetching product data");
+    if (error instanceof Error) {
+      throw new Error("server");
+    }
+    throw new Error("server");
   }
 };

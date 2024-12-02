@@ -4,6 +4,7 @@
     "error": "Error",
     "from": "From",
     "to": "To",
+    "search": "Search",
     "search-results": "Search Results:",
     "price": "Price",
     "reviews": "Reviews",
@@ -70,6 +71,16 @@
       "profile": "Profile",
       "security": "Security Settings"
     }
+  },
+  "select-box": {
+    "labels": {
+      "sort-by": "Sort By"
+    },
+    "all": "All",
+    "rating-asc": "Rating (Low to High)",
+    "rating-desc": "Rating (High to Low)",
+    "recent": "Most Recent",
+    "oldest": "Oldest"
   },
   "errors": {
     "server": "Failed to fetch data from server, please try again later."

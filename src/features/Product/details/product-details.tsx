@@ -7,42 +7,19 @@ import ProductActions from "./product-actions";
 import useProductStore from "../store/use-product-store";
 
 const ProductDetails = () => {
-  const { product } = useProductStore();
-
-  const {
-    name,
-    model,
-    sku,
-    rating,
-    stock_status_id,
-    stock_status_name,
-    price,
-    special,
-    manufacturer_name,
-    total_records: reviews,
-  } = product;
-
-  const productInfoList = [
-    { name: "model", value: model },
-    { name: "sku", value: sku },
-    { name: "brand", value: manufacturer_name },
-  ];
-
-  const isSomeInfoValuesExist = productInfoList.some(info => info.value);
+  const name = useProductStore(state => state.product.name);
+  const stockId = useProductStore(state => state.product.stock_status_id);
+  const stockName = useProductStore(state => state.product.stock_status_name);
 
   return (
     <div className='space-y-6'>
       <Heading as='h1' className='!text-3xl'>
         {name}
       </Heading>
-
-      {isSomeInfoValuesExist && (
-        <ProductInfo productInfoList={productInfoList} />
-      )}
-
-      <ProductReviews score={rating} reviews={reviews} />
-      <StockStatus id={stock_status_id} name={stock_status_name} />
-      <ProductPrice price={price} special={special} />
+      <ProductInfo />
+      <ProductReviews />
+      <StockStatus id={stockId} name={stockName} />
+      <ProductPrice />
       {/* <ProductColors />
       <ProductSizes /> */}
       <ProductActions />

@@ -2,18 +2,15 @@
 
 "use client";
 
-import { FC } from "react";
 import { useTranslations } from "next-intl";
 import parsePrice from "@/lib/parse-price";
 import { cn } from "@/lib/utils";
+import useProductStore from "../store/use-product-store";
 
-interface Props {
-  price: string;
-  special: string;
-}
-
-const ProductPrice: FC<Props> = ({ price, special }) => {
+const ProductPrice = () => {
   const t = useTranslations("globals");
+  const price = useProductStore(state => state.product.price);
+  const special = useProductStore(state => state.product.special);
 
   const originalPrice = parsePrice(price);
   const specialPrice = parsePrice(special!);

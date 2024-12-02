@@ -14,7 +14,7 @@ export const getBrandsApi = async ({
 }: Params): Promise<BrandList | undefined> => {
   try {
     const res = await fetch(
-      "https://s.marvel-cloud.com/marvel_store_api/graphql",
+      "https://s.marvel-cloud.com/api/marvel_store_api/graphql",
       {
         method: "POST",
         headers: {

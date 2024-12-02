@@ -1,15 +1,15 @@
-import { FC } from "react";
 import { useTranslations } from "next-intl";
-import { List } from "lucide-react";
 import { motion } from "framer-motion";
-import { Product } from "@/utils/@types";
+import { List } from "lucide-react";
+import useProductStore from "../store/use-product-store";
 
-interface Props {
-  data: Product["attributes"][0];
-}
-
-const ProductSpecifications: FC<Props> = ({ data }) => {
+const ProductSpecifications = () => {
   const t = useTranslations("product");
+  const attributes = useProductStore(state => state.product.attributes);
+
+  const specifications = attributes?.filter(
+    attr => attr.name !== "specifications",
+  )[0];
 
   return (
     <motion.div
@@ -22,14 +22,14 @@ const ProductSpecifications: FC<Props> = ({ data }) => {
       }}
       className='flex-col-full relative h-full'
     >
-      {data?.attribute.length > 0 ? (
+      {specifications?.attribute.length > 0 ? (
         <>
           <div className='mb-5 flex items-center gap-2 border-b border-border/40 pb-3 font-bold'>
             <List size={20} />
-            <span>{data?.name}</span>
+            <span>{specifications?.name}</span>
           </div>
 
-          {data?.attribute.map(({ attribute_id, name, text }) => (
+          {specifications?.attribute.map(({ attribute_id, name, text }) => (
             <div key={attribute_id} className='metadata-row'>
               <p className='metadata-row-name'>{name}</p>
               <p className='metadata-row-value'>{text}</p>

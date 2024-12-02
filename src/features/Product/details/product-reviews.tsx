@@ -2,17 +2,15 @@
 
 "use client";
 
-import { FC } from "react";
 import { useTranslations } from "next-intl";
 import RatingStars from "@/components/RatingStars";
 import useTabStore from "../store/use-tab-store";
+import useProductStore from "../store/use-product-store";
 
-interface Props {
-  score: number;
-  reviews: number;
-}
+const ProductReviews = () => {
+  const score = useProductStore(state => state.product.rating);
+  const count = useProductStore(state => state.ratingsCount);
 
-const ProductReviews: FC<Props> = ({ score, reviews }) => {
   const t = useTranslations("product");
   const { setTab } = useTabStore();
 
@@ -24,7 +22,7 @@ const ProductReviews: FC<Props> = ({ score, reviews }) => {
         className='ms-2 text-sm font-semibold text-foreground transition-colors duration-300 hover:text-primary'
         onClick={() => setTab("reviews")}
       >
-        ({reviews} {t("reviews")})
+        ({count} {t("reviews")})
       </a>
     </div>
   );

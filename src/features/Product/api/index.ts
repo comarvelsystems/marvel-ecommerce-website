@@ -12,6 +12,8 @@ interface ReviewApiParams {
   page?: number;
   perPage?: number;
   languageId?: number;
+  search?: string;
+  sort?: string;
 }
 
 export const getProductApi = async (
@@ -20,7 +22,7 @@ export const getProductApi = async (
 ): Promise<ProductApi | undefined> => {
   try {
     const res = await fetch(
-      "https://s.marvel-cloud.com/marvel_store_api/graphql",
+      "https://s.marvel-cloud.com/api/marvel_store_api/graphql",
       {
         method: "POST",
         headers: {
@@ -97,10 +99,12 @@ export const getProductApi = async (
                       text
                     }
                   }
+                  ratings_list {
+                    rating
+                    count
+                    percentage
+                  }
                 }
-              }
-              review_list(product_id: $productId, language_id: $languageId) {
-                total_records
               }
             }`,
           variables: {
@@ -134,11 +138,13 @@ export const getReviewsApi = async ({
   productId,
   page = 1,
   perPage = 2,
+  search,
+  sort,
   languageId,
 }: ReviewApiParams): Promise<ReviewList | undefined> => {
   try {
     const res = await fetch(
-      "https://s.marvel-cloud.com/marvel_store_api/graphql",
+      "https://s.marvel-cloud.com/api/marvel_store_api/graphql",
       {
         method: "POST",
         headers: {
@@ -146,8 +152,8 @@ export const getReviewsApi = async ({
         },
         body: JSON.stringify({
           query: `
-            query Reviews($productId: Int!, $page: Int!, $perPage: Int, $languageId: Int) {
-              review_list(product_id: $productId, page: $page, per_page: $perPage, language_id: $languageId) {
+            query Reviews($productId: Int!, $page: Int!, $perPage: Int, $languageId: Int, $search: String, $sort: String) {
+              review_list(product_id: $productId, page: $page, per_page: $perPage, language_id: $languageId, filter_search: $search, sort_type: $sort) {
                 total_records
                 pagination {
                   page
@@ -169,6 +175,8 @@ export const getReviewsApi = async ({
             page,
             perPage,
             languageId,
+            search,
+            sort,
           },
         }),
       },

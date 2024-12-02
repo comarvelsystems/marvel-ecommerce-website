@@ -3,7 +3,9 @@ import { useTranslations } from "next-intl";
 import { ReviewList } from "@/utils/@types";
 import ProductReviewsItem from "./product-reviews-item";
 import useInfinite from "@/hooks/use-infinite";
-import useFetchReviews from "../../hooks/use-fetch-reviews";
+import useFetchReviews, {
+  FetchReviewsParams,
+} from "../../hooks/use-fetch-reviews";
 import { LoadMoreButton } from "@/components";
 import ReviewsListSkeleton from "../../skeleton/reviews-list-skeleton";
 
@@ -12,6 +14,8 @@ const ProductReviewsList = () => {
   const searchParams = useSearchParams();
 
   const productId = Number(searchParams.get("pid"));
+  const searchQuery = searchParams.get("search") || "";
+  const sortby = searchParams.get("sortby") || "";
 
   const {
     pages,
@@ -21,7 +25,16 @@ const ProductReviewsList = () => {
     hasNextPage,
     fetchNextPage,
     isNotEmpty,
-  } = useInfinite(useFetchReviews, "reviews", productId, productId, 3);
+  } = useInfinite(
+    useFetchReviews,
+    "reviews",
+    `${productId}${searchQuery}${sortby}`,
+    {
+      productId,
+      searchQuery,
+      sortby,
+    } as FetchReviewsParams,
+  );
 
   return (
     <>

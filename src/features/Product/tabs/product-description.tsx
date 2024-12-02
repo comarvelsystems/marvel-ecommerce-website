@@ -1,15 +1,12 @@
 "use client";
 
-import { FC } from "react";
 import { useTranslations } from "next-intl";
 import { motion } from "framer-motion";
+import useProductStore from "../store/use-product-store";
 
-interface Props {
-  description: string;
-}
-
-const ProductDescription: FC<Props> = ({ description }) => {
+const ProductDescription = () => {
   const t = useTranslations("product");
+  const description = useProductStore(state => state.product.description);
 
   return (
     <motion.div

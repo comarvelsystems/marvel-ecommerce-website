@@ -45,7 +45,7 @@ const ProductCard: React.FC<Product> = ({
             <Image
               src={
                 image
-                  ? `https://s.marvel-cloud.com/image/${image}`
+                  ? `https://s.marvel-cloud.com/api/image/${image}`
                   : Placeholder
               }
               alt={name}

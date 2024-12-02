@@ -2,28 +2,40 @@
 
 "use client";
 
-import { FC, Fragment } from "react";
+import { Fragment } from "react";
 import { useTranslations } from "next-intl";
+import useProductStore from "../store/use-product-store";
 
-interface Props {
-  productInfoList: { name: string; value: string }[];
-}
-
-const ProductInfo: FC<Props> = ({ productInfoList }) => {
+const ProductInfo = () => {
   const t = useTranslations("product");
+  const model = useProductStore(state => state.product.model);
+  const sku = useProductStore(state => state.product.sku);
+  const brand = useProductStore(state => state.product.manufacturer_name);
+
+  const productInfoList = [
+    { name: "model", value: model },
+    { name: "sku", value: sku },
+    { name: "brand", value: brand },
+  ];
+
+  const isValue = productInfoList.some(info => info.value);
 
   return (
-    <div className='product-identifier text-md divide-divide divide-x text-muted-foreground/90'>
-      {productInfoList?.map(({ name, value }) => (
-        <Fragment key={`${name}`}>
-          {value && (
-            <span>
-              {t(name as any)}: {value}
-            </span>
-          )}
-        </Fragment>
-      ))}
-    </div>
+    <>
+      {isValue && (
+        <div className='product-identifier text-md divide-divide divide-x text-muted-foreground/90'>
+          {productInfoList?.map(({ name, value }) => (
+            <Fragment key={`${name}`}>
+              {value && (
+                <span>
+                  {t(name as any)}: {value}
+                </span>
+              )}
+            </Fragment>
+          ))}
+        </div>
+      )}
+    </>
   );
 };
 

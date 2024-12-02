@@ -3,3 +3,8 @@ export enum StockStatus {
   OUTOFSTOCK = 5,
   PREORDER = 8,
 }
+
+export enum Language {
+  EN = 1,
+  AR = 2,
+}

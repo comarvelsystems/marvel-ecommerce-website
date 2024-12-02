@@ -3,7 +3,19 @@ import ms from "ms";
 import { ReviewList } from "@/utils/@types";
 import { getReviewsApi } from "../api";
 
-const useFetchReviews = (productId: number, limit: number = 16) => {
+export interface FetchReviewsParams {
+  productId: number;
+  limit: number;
+  searchQuery: string;
+  sortby: string;
+}
+
+const useFetchReviews = ({
+  productId,
+  limit = 2,
+  searchQuery,
+  sortby,
+}: FetchReviewsParams) => {
   const {
     data,
     isLoading,
@@ -16,9 +28,15 @@ const useFetchReviews = (productId: number, limit: number = 16) => {
     fetchNextPage,
     refetch,
   } = useInfiniteQuery({
-    queryKey: ["reviews", productId],
+    queryKey: ["reviews", `${productId}${searchQuery}${sortby}`],
     queryFn: async ({ pageParam }) =>
-      getReviewsApi({ page: pageParam, productId, perPage: limit }),
+      getReviewsApi({
+        page: pageParam,
+        productId,
+        perPage: limit,
+        search: searchQuery,
+        sort: sortby,
+      }),
     staleTime: ms("1h"),
     initialPageParam: 1,
     getNextPageParam: (data: ReviewList | undefined) => {

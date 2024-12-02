@@ -21,6 +21,9 @@ interface Props {
 const ProductSlider: FC<Props> = ({ image, images }) => {
   const [thumbsSwiper, setThumbsSwiper] = useState<SwiperType | null>(null);
 
+  //TODO: Delete This
+  const imageUrl = `https://s.marvel-cloud.com/api/image`;
+
   return (
     <div className='h-auto space-y-3 overflow-hidden rounded-xl lg:h-[600px] lg:w-[560px]'>
       <Swiper
@@ -35,7 +38,7 @@ const ProductSlider: FC<Props> = ({ image, images }) => {
         <SwiperSlide className='h-96 md:h-[480px] lg:h-[640px]'>
           <Zoom>
             <Image
-              src={`https://s.marvel-cloud.com/image/${image}`}
+              src={`${imageUrl}/${image}`}
               width={0}
               height={0}
               sizes='100vw'
@@ -55,7 +58,7 @@ const ProductSlider: FC<Props> = ({ image, images }) => {
               >
                 <Zoom>
                   <Image
-                    src={`https://s.marvel-cloud.com/image/${image}`}
+                    src={`${imageUrl}/${image}`}
                     width={0}
                     height={0}
                     sizes='100vw'
@@ -86,7 +89,7 @@ const ProductSlider: FC<Props> = ({ image, images }) => {
             {images?.map(({ product_image_id, image }, index) => (
               <SwiperSlide key={product_image_id}>
                 <Image
-                  src={`https://s.marvel-cloud.com/image/${image}`}
+                  src={`${imageUrl}/${image}`}
                   width={0}
                   height={0}
                   sizes='100vw'

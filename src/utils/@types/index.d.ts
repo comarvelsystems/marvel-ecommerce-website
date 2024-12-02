@@ -117,6 +117,11 @@ export interface Product {
       text: string;
     }[];
   }[];
+  ratings_list: {
+    rating: number;
+    count: number;
+    percentage: string;
+  }[];
 }
 
 export interface Brand {

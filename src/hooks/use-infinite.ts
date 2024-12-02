@@ -4,7 +4,7 @@ import { useEffect, useMemo } from "react";
 function useInfinite<T extends { [key: string]: any }>(
   handler: (...args: any[]) => any,
   listName: string,
-  queryKeySecond?: number,
+  queryKeySecond?: number | string,
   ...args: any[]
 ) {
   const queryClient = useQueryClient();

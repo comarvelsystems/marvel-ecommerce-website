@@ -3,7 +3,7 @@ import ms from "ms";
 import { getCategoriesApi } from "@/apis/categoryApi";
 import { Categories } from "@/utils/@types";
 
-const useFetchCategories = (limit: number = 16) => {
+const useFetchCategories = (limit: number = 16, languageId = 1) => {
   const {
     data,
     isLoading,
@@ -17,7 +17,8 @@ const useFetchCategories = (limit: number = 16) => {
     refetch,
   } = useInfiniteQuery({
     queryKey: ["categories"],
-    queryFn: async ({ pageParam }) => getCategoriesApi(pageParam, limit),
+    queryFn: async ({ pageParam }) =>
+      getCategoriesApi(pageParam, limit, languageId),
     staleTime: ms("1h"),
     initialPageParam: 1,
     getNextPageParam: (data: Categories | undefined) => {
