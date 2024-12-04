@@ -6,6 +6,7 @@ interface Params {
   perPage?: number;
   sort?: string;
   brandIds?: string;
+  languageId: number;
 }
 
 export const getProductsForCategoryApi = async ({
@@ -14,6 +15,7 @@ export const getProductsForCategoryApi = async ({
   perPage = 10,
   sort,
   brandIds,
+  languageId = 1,
 }: Params): Promise<ProductList | undefined> => {
   try {
     const res = await fetch(
@@ -25,8 +27,8 @@ export const getProductsForCategoryApi = async ({
         },
         body: JSON.stringify({
           query: `
-            query ProductsForCategory($categoryId: Int!, $page: Int!, $perPage: Int, $sort: String, $brandIds: String) {
-              product_list(filter_category_id: $categoryId, page: $page, perPage: $perPage, sort: $sort, filter_manufacturer_id: $brandIds) {
+            query ProductsForCategory($categoryId: Int!, $page: Int!, $perPage: Int, $sort: String, $brandIds: String, $languageId: Int) {
+              product_list(filter_category_id: $categoryId, page: $page, perPage: $perPage, sort: $sort, filter_manufacturer_id: $brandIds, language_id: $languageId) {
                 total_records
                 pagination {
                     page
@@ -58,6 +60,7 @@ export const getProductsForCategoryApi = async ({
             perPage,
             sort,
             brandIds,
+            languageId,
           },
         }),
       },

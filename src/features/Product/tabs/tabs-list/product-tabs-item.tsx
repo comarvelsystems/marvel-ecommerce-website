@@ -1,5 +1,6 @@
 "use client";
 
+import { useTranslations } from "next-intl";
 import { cn } from "@/lib/utils";
 import Heading from "@/components/Heading";
 import useTabStore from "../../store/use-tab-store";
@@ -18,6 +19,7 @@ const ProductTabsItem: React.FC<Props> = ({
   label,
 }) => {
   const { tab, setTab } = useTabStore();
+  const t = useTranslations("product.tabs");
 
   return (
     <li
@@ -35,9 +37,11 @@ const ProductTabsItem: React.FC<Props> = ({
           tab === label && "text-primary",
         )}
       >
-        {title}
+        {t(title as any)}
       </Heading>
-      <p className='hidden text-muted-foreground/80 lg:block'>{description}</p>
+      <p className='hidden text-muted-foreground/80 lg:block'>
+        {t(description as any)}
+      </p>
     </li>
   );
 };

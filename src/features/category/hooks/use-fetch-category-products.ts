@@ -8,6 +8,7 @@ interface Params {
   limit?: number;
   sort?: string;
   brandIds?: string;
+  languageId?: number;
 }
 
 const useFetchCategoryProducts = ({
@@ -16,6 +17,7 @@ const useFetchCategoryProducts = ({
   limit,
   sort,
   brandIds,
+  languageId = 1,
 }: Params) => {
   const category = `${categoryName}-${categoryId}`;
 
@@ -39,6 +41,7 @@ const useFetchCategoryProducts = ({
         perPage: limit,
         sort,
         brandIds,
+        languageId,
       }),
     initialPageParam: 1,
     getNextPageParam: (data: ProductList | undefined) => {

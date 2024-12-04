@@ -1,5 +1,8 @@
 {
   "globals": {
+    "account": "Account",
+    "all-categories": "All Categories",
+    "browse-all": "Browse All",
     "items": "Items",
     "error": "Error",
     "from": "From",
@@ -38,6 +41,27 @@
     "brands": {
       "title": "Brands"
     },
+    "perfume": {
+      "title": "Perfume"
+    },
+    "makeups": {
+      "title": "Makeups"
+    },
+    "care": {
+      "title": "Care"
+    },
+    "my-profile":{
+      "title": "My Profile"
+    },
+    "my-orders": {
+      "title": "My Orders"
+    },
+    "my-payments": {
+      "title": "My Payments"
+    },
+    "my-addresses": {
+      "title": "My Addresses"
+    },
     "not-found": {
       "title": "Page Not Found",
       "message": "The page you are looking for might have been removed, had its name changed, or is temporarily unavailable.",
@@ -58,7 +82,29 @@
     },
     "empty-description": "No description available for this product.",
     "empty-specifications": "No specifications available for this product.",
-    "empty-reviews": "No reviews yet. You can purchase the product and leave the first review!"
+    "empty-reviews": "No reviews yet. You can purchase the product and leave the first review!",
+    "sidebar": {
+      "warranty": "1 year warranty",
+      "delivery": "Delivery fee 20 riyals.",
+      "time": "Get it by October 8th.",
+      "returned": "This product cannot be exchanged or returned.",
+      "shopping": "Safe shopping.",
+      "payments": "Secure payments."
+    },
+    "tabs": {
+      "description": {
+        "title": "Description",
+        "description": "View product description."
+      },
+      "specifications": {
+        "title": "Specifications",
+        "description": "View product specifications."
+      },
+      "reviews": {
+        "title": "Reviews",
+        "description": "View product reviews."
+      }
+    }
   },
   "account": {
     "sidebar": {
@@ -84,5 +130,25 @@
   },
   "errors": {
     "server": "Failed to fetch data from server, please try again later."
+  },
+  "footer": {
+    "description": "Your one-stop shop for all your needs. Quality products, great prices, and excellent customer service.",
+    "items": {
+      "title": "Quick Links",
+      "products": "Products",
+      "categories": "Categories",
+      "deals": "Deals",
+      "about": "About Us",
+      "title2": "Customer Service",
+      "contact": "Contact Us",
+      "shipping": "Shipping Information",
+      "returns": "Returns & Exchanges",
+      "FAQ": "FAQ"
+    },
+    "copyright": "Marvel Systems. All rights reserved."
+  },
+  "dummy": {
+    "featured-category": "Featured Category",
+    "popular-products": "Popular Products"
   }
 }

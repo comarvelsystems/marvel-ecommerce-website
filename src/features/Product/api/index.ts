@@ -11,9 +11,9 @@ interface ReviewApiParams {
   productId: number;
   page?: number;
   perPage?: number;
-  languageId?: number;
   search?: string;
   sort?: string;
+  languageId?: number;
 }
 
 export const getProductApi = async (

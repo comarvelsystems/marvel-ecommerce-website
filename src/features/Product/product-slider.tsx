@@ -25,7 +25,7 @@ const ProductSlider: FC<Props> = ({ image, images }) => {
   const imageUrl = `https://s.marvel-cloud.com/api/image`;
 
   return (
-    <div className='h-auto space-y-3 overflow-hidden rounded-xl lg:h-[600px] lg:w-[560px]'>
+    <div className='h-auto space-y-3 overflow-hidden rounded-xl lg:min-h-[500px] lg:w-[560px]'>
       <Swiper
         spaceBetween={10}
         parallax={true}

@@ -10,7 +10,7 @@ const ProductTabs = () => {
   return (
     <div
       id='tabs'
-      className='product-tabs flex flex-col gap-8 border-y border-border/40 py-6 lg:flex-row lg:items-start lg:py-8'
+      className='product-tabs flex flex-col gap-8 border-t border-border/40 py-6 lg:flex-row lg:items-start lg:py-8'
     >
       <ProductTabsList />
       <div className='basis-full self-stretch lg:basis-4/6'>

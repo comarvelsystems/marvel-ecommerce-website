@@ -2,7 +2,7 @@
 
 import { useEffect, useMemo } from "react";
 import { notFound, useSearchParams } from "next/navigation";
-import RelatedProduct from "@/components/RelatedProduct";
+// import RelatedProduct from "@/components/RelatedProduct";
 import ProductSlider from "@/features/Product/product-slider";
 import ProductDetails from "@/features/Product/details/product-details";
 import SidebarLeft from "@/features/Product/sidebar-left/SidebarLeft";
@@ -11,14 +11,22 @@ import useFetchProduct from "./hooks/use-fetch-product";
 import { ProductInfo } from "@/utils/@types";
 import useProductStore from "./store/use-product-store";
 import ProductSkeleton from "./skeleton/product-skeleton";
+import { useLocale } from "next-intl";
+import { Language } from "@/utils/enums";
 
 const ProductContainer = () => {
   const searchParams = useSearchParams();
   const { setProduct, setLoading, setFetching } = useProductStore();
+  const locale = useLocale();
 
+  const languageId =
+    Language[locale.toLocaleUpperCase() as keyof typeof Language];
   const productId = Number(searchParams.get("pid"));
 
-  const { data, isLoading, isFetching } = useFetchProduct(productId);
+  const { data, isLoading, isFetching } = useFetchProduct(
+    productId,
+    languageId,
+  );
 
   const product = useMemo(() => {
     const productData = {
@@ -45,7 +53,7 @@ const ProductContainer = () => {
 
   return (
     <div className='space-y-8'>
-      <div className='xl:space-y-8'>
+      <div className='xl:space-y-0'>
         <div className='flex flex-col gap-8 xl:flex-row'>
           <div className='flex flex-col gap-8 lg:flex-[70%] lg:flex-shrink-0 lg:flex-grow-0 lg:flex-row'>
             <ProductSlider image={product?.image} images={product?.images} />
@@ -55,7 +63,7 @@ const ProductContainer = () => {
         </div>
         <ProductTabs />
       </div>
-      <RelatedProduct />
+      {/* <RelatedProduct /> */}
     </div>
   );
 };

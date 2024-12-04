@@ -10,12 +10,16 @@ import ProductSkeleton from "@/components/products/ProductSkeleton";
 import { Empty, LoadMoreButton, PageInfo } from "@/components";
 import useFetchCategoryProducts from "./hooks/use-fetch-category-products";
 import { topVariant } from "@/lib/motion";
+import { useLocale } from "next-intl";
+import { Language } from "@/utils/enums";
 
 const CategoryProducts = () => {
   const { slug } = useParams();
   const searchParams = useSearchParams();
   const queryClient = useQueryClient();
+  const locale = useLocale();
 
+  const currentLang = locale.toLocaleUpperCase() as keyof typeof Language;
   const categoryId = Number(searchParams.get("cid"));
   const getBrands = searchParams.get("brands");
 
@@ -38,6 +42,7 @@ const CategoryProducts = () => {
     categoryName: slug as string,
     categoryId,
     brandIds,
+    languageId: Language[currentLang],
   });
 
   const pages = useMemo(() => {

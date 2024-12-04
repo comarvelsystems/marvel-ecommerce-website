@@ -1,4 +1,4 @@
-import Navbar from "@/components/navbar/Navbar";
+import { Footer, Header } from "@/components";
 
 interface Props {
   children: Readonly<React.ReactNode>;
@@ -7,9 +7,9 @@ interface Props {
 const layout = ({ children }: Props) => {
   return (
     <>
-      <Navbar />
+      <Header />
       {children}
-      <footer className='mt-10 h-80 bg-muted'></footer>
+      <Footer />
     </>
   );
 };

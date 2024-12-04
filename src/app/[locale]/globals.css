@@ -153,11 +153,11 @@
   }
 
   .carousel > button:nth-of-type(1) {
-    @apply -top-[51px] left-auto right-[calc(40px+6px)];
+    @apply -top-[51px] left-auto right-[calc(40px+6px)] rtl:left-[calc(40px+6px)] rtl:right-auto rtl:-rotate-180;
   }
 
   .carousel > button:last-child {
-    @apply -top-[51px] right-0;
+    @apply -top-[51px] right-0 rtl:left-0 rtl:right-auto rtl:rotate-180;
   }
 
   .carousel > button:nth-of-type(1):hover,

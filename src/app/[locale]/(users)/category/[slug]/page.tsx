@@ -19,7 +19,7 @@ export function generateMetadata({ params }: Props): Metadata {
 
 const CategoryPage: FC<Props> = ({ params }) => {
   return (
-    <section className='s-padding'>
+    <section>
       <script
         type='application/ld+json'
         dangerouslySetInnerHTML={{

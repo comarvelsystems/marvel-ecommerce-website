@@ -1,7 +1,5 @@
 "use client";
 
-import { useEffect } from "react";
-import { useQueryClient } from "@tanstack/react-query";
 import useFetchCategories from "@/hooks/use-fetch-categories";
 import {
   Empty,
@@ -11,9 +9,12 @@ import {
 } from "@/components";
 import CategoryList from "./category-list";
 import useInfinite from "@/hooks/use-infinite";
+import { useLocale } from "next-intl";
+import { Language } from "@/utils/enums";
 
 const CategoriesContainer = () => {
-  const queryClient = useQueryClient();
+  const locale = useLocale();
+  const currentLang = locale.toUpperCase() as keyof typeof Language;
 
   const {
     isFetching,
@@ -26,15 +27,13 @@ const CategoriesContainer = () => {
     count,
     totalRecords,
     isNotEmpty,
-  } = useInfinite(useFetchCategories, "categories", undefined, 8);
-
-  useEffect(() => {
-    if (isRefetching) {
-      queryClient.resetQueries({
-        queryKey: ["categories"],
-      });
-    }
-  }, [isRefetching, queryClient]);
+  } = useInfinite(
+    useFetchCategories,
+    "categories",
+    undefined,
+    8,
+    Language[currentLang],
+  );
 
   if (isLoading || isRefetching) {
     return <CategoriesSkeleton />;

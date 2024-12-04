@@ -89,20 +89,89 @@ export const ORDERS_TABS = [
 export const PRODUCT_TABS = [
   {
     id: "1",
-    title: "Product Description",
-    description: "View product description.",
+    title: "description.title",
+    description: "description.description",
     label: "description",
   },
   {
     id: "2",
-    title: "Product Specifications",
-    description: "View product specifications.",
+    title: "specifications.title",
+    description: "specifications.description",
     label: "specifications",
   },
   {
     id: "3",
-    title: "Product Reviews",
-    description: "View product reviews.",
+    title: "reviews.title",
+    description: "reviews.description",
     label: "reviews",
+  },
+];
+
+export const NAVBAR_ITEMS = [
+  {
+    title: "pages.perfume.title",
+    label: "perfumes",
+    href: "#",
+    description:
+      "A modal dialog that interrupts the user with important content and expects a response.",
+  },
+  {
+    title: "pages.makeups.title",
+    label: "makeups",
+    href: "#",
+    description:
+      "A modal dialog that interrupts the user with important content and expects a response.",
+  },
+  {
+    title: "pages.care.title",
+    label: "care",
+    href: "#",
+    description:
+      "A modal dialog that interrupts the user with important content and expects a response.",
+  },
+  {
+    title: "pages.brands.title",
+    label: "brands",
+    href: "#",
+    description:
+      "A modal dialog that interrupts the user with important content and expects a response.",
+  },
+];
+
+export const LANGUAGES = [
+  {
+    id: 1,
+    name: "العربية",
+    abbreviation: "ar",
+    icon_path: "/images/SA.png",
+  },
+  {
+    id: 2,
+    name: "English",
+    abbreviation: "en",
+    icon_path: "/images/GB.png",
+  },
+];
+
+export const ACCOUNT_ITEMS = [
+  {
+    name: "pages.my-profile.title",
+    label: "my-profile",
+    href: "#",
+  },
+  {
+    name: "pages.my-orders.title",
+    label: "my-orders",
+    href: "#",
+  },
+  {
+    name: "pages.my-payments.title",
+    label: "my-payments",
+    href: "#",
+  },
+  {
+    name: "pages.my-addresses.title",
+    label: "my-address",
+    href: "#",
   },
 ];

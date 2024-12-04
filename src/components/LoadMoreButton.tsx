@@ -28,7 +28,7 @@ const LoadMoreButton: FC<Props> = ({
             onClick={() => handler()}
             disabled={!hasNextPage || isFetchingNextPage}
             className={cn(
-              "rtl:hover:before-left-0 relative h-[50px] gap-6 rounded-full border-primary p-0 pl-5 pr-[5px] text-base text-primary !opacity-100 before:absolute before:right-[5px] before:top-1/2 before:size-10 before:-translate-y-1/2 before:rounded-full before:bg-primary before:transition-all before:content-[attr(before)] hover:text-background hover:before:right-0 hover:before:h-full hover:before:w-full hover:before:translate-x-0 rtl:pl-[5px] rtl:pr-5 rtl:before:left-[5px] rtl:before:right-auto rtl:hover:before:right-auto",
+              "rtl:hover:before-left-0 relative h-[50px] gap-6 rounded-full border-primary p-0 pl-5 pr-[5px] text-base text-primary !opacity-100 before:absolute before:right-[5px] before:top-1/2 before:size-10 before:-translate-y-1/2 before:rounded-full before:bg-primary before:transition-all before:content-[attr(before)] hover:text-background hover:before:right-0 hover:before:h-full hover:before:w-full hover:before:translate-x-0 rtl:pl-[5px] rtl:pr-5 rtl:before:left-[5px] rtl:before:right-auto rtl:hover:before:left-0 rtl:hover:before:right-auto",
               !hasNextPage && "hidden",
             )}
             size='lg'

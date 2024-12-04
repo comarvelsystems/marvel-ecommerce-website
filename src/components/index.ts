@@ -17,3 +17,6 @@ export { default as StarRating } from "./StarRating";
 export { default as RefetchButton } from "./RefetchButton";
 export { default as LoadMoreButton } from "./LoadMoreButton";
 export { default as PageInfo } from "./PageInfo";
+export { default as Header } from "./header/header";
+export { default as SwitchLanguage } from "./switch-language";
+export { default as Footer } from "./footer";
