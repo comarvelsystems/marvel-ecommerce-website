@@ -1,3 +1,5 @@
+"use client";
+
 import AddressesContainer from "@/features/account/address/AddressesContainer";
 
 const AddressesPage = () => {
