@@ -2,9 +2,9 @@ import { useTranslations } from "next-intl";
 import { motion } from "framer-motion";
 import { Star } from "lucide-react";
 import Heading from "@/components/Heading";
-import ProductReviewsScore from "./product-reviews-score";
 import ProductReviewsList from "./product-reviews-list";
 import ProductReviewsFilters from "./product-reviews-filters";
+import ProductReviewsScore from "./product-reviews-score";
 
 const ProductReviews = () => {
   const t = useTranslations("product.product-reviews");
