@@ -4,7 +4,7 @@ import { Star } from "lucide-react";
 import Heading from "@/components/Heading";
 import ProductReviewsList from "./product-reviews-list";
 import ProductReviewsFilters from "./product-reviews-filters";
-import ProductReviewsScore from "./product-reviews-score";
+import ProductReviewsScoreDetails from "./product-reviews-score-details";
 
 const ProductReviews = () => {
   const t = useTranslations("product.product-reviews");
@@ -25,7 +25,7 @@ const ProductReviews = () => {
         <Heading as='h6'>{t("title")}</Heading>
       </div>
       <div className='space-y-8'>
-        <ProductReviewsScore />
+        <ProductReviewsScoreDetails />
         <div className='space-y-2'>
           <ProductReviewsFilters />
           <ProductReviewsList />
